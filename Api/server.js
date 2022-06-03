@@ -27,10 +27,16 @@ app.use(fileUpload())
 *######################
 */
 const {
-  createNewUser,
-} = require('./controllers/usersControllers')
+  createNewUser, 
+  login,
+} = 
+require('./controllers/usersControllers')
 
+// Creamos un nuevo usuario.
 app.post('/users', createNewUser);
+
+// Login de usuario
+app.post('/login', login)
 /*
 *##########################
 *## Trainings Endpoints ###
