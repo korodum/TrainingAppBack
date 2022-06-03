@@ -1,4 +1,4 @@
-require('dotenv').config;
+require('dotenv').config();
 
 const { PORT } = process.env;
 
@@ -26,8 +26,11 @@ app.use(fileUpload())
 *## Users Endpoints ###
 *######################
 */
+const {
+  createNewUser,
+} = require('./controllers/usersControllers')
 
-
+app.post('/users', createNewUser);
 /*
 *##########################
 *## Trainings Endpoints ###
