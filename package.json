@@ -15,5 +15,21 @@
   "bugs": {
     "url": "https://github.com/korodum/TrainingAppBack/issues"
   },
-  "homepage": "https://github.com/korodum/TrainingAppBack#readme"
+  "homepage": "https://github.com/korodum/TrainingAppBack#readme",
+  "devDependencies": {
+    "eslint": "^8.16.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.16",
+    "prettier": "^2.6.2"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-fileupload": "^1.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.3.3",
+    "nanoid": "^3.3.4",
+    "sharp": "^0.30.6"
+  }
 }
