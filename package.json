@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db": "node ./Api/db/initDB.js",
+    "dev": "nodemon ./Api/server.js"
   },
   "repository": {
     "type": "git",
