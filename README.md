@@ -86,3 +86,6 @@ Implement and API that allow to manage (publish, modify, delete, vote and filter
 - mysql2
 - sharp
 - nanoid
+
+
+./database_png
