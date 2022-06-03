@@ -34,9 +34,10 @@ async function main() {
             description VARCHAR(300) NOT NULL,
             typology ENUM('strength','flexibility','cardio','resistance','equilibrium','recovery') DEFAULT 'strength',
             muscleGroup ENUM('back','chest','arms','shoulders','legs'),
+            image VARCHAR(100),
             createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
             )
-        `)
+        `);
 
         await connection.query(`
         CREATE TABLE IF NOT EXISTS plans(
