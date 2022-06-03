@@ -18,6 +18,7 @@ const getConnection = async () => {
         timezone: 'Z'
       });
     }
+    return await pool.getConnection();
   } catch (error) {
     throw new Error(
       'Error creating connection or database not found'

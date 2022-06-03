@@ -26,7 +26,7 @@ Implement and API that allow to manage (publish, modify, delete, vote and filter
 
 ###  Entities of data base
 
-- **USERS** - Can be trainer type or user type
+- **USERS** - Can be admin type, trainer type or user type
     - id
     - name
     - email
@@ -86,6 +86,3 @@ Implement and API that allow to manage (publish, modify, delete, vote and filter
 - mysql2
 - sharp
 - nanoid
-
-
-./database_png
