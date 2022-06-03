@@ -24,6 +24,8 @@ Implement and API that allow to manage (publish, modify, delete, vote and filter
 
 ## OUR DATABASE 📝
 
+![Getting Started](./database_diagram.png)
+
 ###  Entities of data base
 
 - **USERS** - Can be trainer type or user type
@@ -38,6 +40,7 @@ Implement and API that allow to manage (publish, modify, delete, vote and filter
 - **TRAININGS** - Contains information about the trainings.
     - id
     - userId
+    - name
     - description
     - picture
     - typology
@@ -46,6 +49,21 @@ Implement and API that allow to manage (publish, modify, delete, vote and filter
     - createdAt
     - modifiedAt
 
+- **PLANS** - Contains information about the plans.
+    - id
+    - name
+    - description
+    - typology
+    - muscle group
+    - series
+    - sets
+    - restTime
+    - trainingId
+    - trainerId
+    - userId
+    - createdAt
+    - modifiedAt
+    
 ### Entities Relationship
 
 - **LIKES** - Contains the likesthe users give to an training
@@ -88,4 +106,3 @@ Implement and API that allow to manage (publish, modify, delete, vote and filter
 - nanoid
 
 
-./database_png
