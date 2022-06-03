@@ -32,7 +32,7 @@ async function main() {
             id INT PRIMARY KEY AUTO_INCREMENT,
             name VARCHAR(25) NOT NULL,
             description VARCHAR(300) NOT NULL,
-            typology ENUM('strength','flexibility','cardio','resistance','equilibrium','recovery'),
+            typology ENUM('strength','flexibility','cardio','resistance','equilibrium','recovery') DEFAULT 'strength',
             muscleGroup ENUM('back','chest','arms','shoulders','legs'),
             createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
             )
@@ -43,7 +43,7 @@ async function main() {
             id INT PRIMARY KEY AUTO_INCREMENT,
             name VARCHAR(25) NOT NULL,
             description VARCHAR(300) NOT NULL,
-            typology ENUM('strength','flexibility','cardio','resistance','equilibrium','recovery'),
+            typology ENUM('strength','flexibility','cardio','resistance','equilibrium','recovery') DEFAULT 'strength',
             muscleGroup ENUM('back','chest','arms','shoulders','legs'),
             trainerId INT,
             trainingId INT NOT NULL,
