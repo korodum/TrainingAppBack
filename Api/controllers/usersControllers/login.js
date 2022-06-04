@@ -22,7 +22,7 @@ const login = async (req,res,next) =>{
         // Si no es correcta lanzamos error.
         if(!match) throw generateError('Invalid password',401 )
 
-        // Almacenamos lon erts tiuos datos que queremos en el token.
+        // Almacenamos los datos que queremos en el token.
         const payload = {
             id:userLogin.id,
             role:userLogin.role,
