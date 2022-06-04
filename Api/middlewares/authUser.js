@@ -19,7 +19,7 @@ const authUser = (req,res,next)=>{
             throw generateError('Token incorrecto', 401);
         }
 
-    req.idUser = token.id;
+        req.user = token;
 
     next();
 

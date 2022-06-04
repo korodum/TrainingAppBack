@@ -19,8 +19,8 @@ app.use(fileUpload())
 *## Middlewares ##
 *#################
 */
-
-
+const  {isAdmin} = require('./middlewares/isAdmin')
+const  {authUser} = require('./middlewares/authUser')
 /*
 *######################
 *## Users Endpoints ###
@@ -55,7 +55,7 @@ const {
 } = require('./controllers/trainingsControllers');
 
 // create a new training
-app.post('/trainings', newTraining);
+app.post('/trainings', authUser, isAdmin, newTraining);
 
 /*
 *######################

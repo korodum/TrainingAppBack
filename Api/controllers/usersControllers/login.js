@@ -29,7 +29,9 @@ const login = async (req,res,next) =>{
         }
 
         // Creamos el token del usuario.
-        const token = jwt.sign( payload, process.env.SECRET,{ expiresIn:'30d' })
+        const token = jwt.sign( payload, process.env.SECRET,{
+            expiresIn:'30d'
+        })
 
         res.send({
             status:'ok',
