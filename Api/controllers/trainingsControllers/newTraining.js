@@ -1,6 +1,9 @@
+const path = require('path');
+const sharp = require('sharp');
+const{ nanoid } = require('nanoid');
 const { newTrainingQuery } = require('../../db/trainingQueries/newTrainingQuery');
 
-const { generateError } = require('../../helpers');
+const { generateError, createPathIfNotExists } = require('../../helpers');
 
 const newTraining = async (req, res, next) => {
   try{
@@ -8,20 +11,50 @@ const newTraining = async (req, res, next) => {
     const {name, muscleGroup , typology, description } = req.body;
 
     // Han de rellenarse todos los campos
-    if(!name || !muscleGroup || !typology || !description ) throw generateError('Fill all fields',400);
+    if(!name || !muscleGroup || !typology || !description ) {
+
+      throw generateError(
+        'Fill all fields',
+        400
+
+        );
+    }
+
+    let imgName;
+
+    if( req.files && req.files.images ) {
+
+      const uploadsDir = path.join(__dirname, '..', '..', 'uploads');
+
+      await createPathIfNotExists(uploadsDir);
+
+      const sharpImg = sharp(req.files.images.data);
+
+      sharpImg.resize(500);
+
+      imgName = `${nanoid(24)}.jpg`;
+
+      const imgPath = path.join(uploadsDir, imgName);
+
+      await sharpImg.toFile(imgPath);
+
+    }
 
 
     // Creamos un usuario en la base de datos.
-    const user = newTrainingQuery(name,muscleGroup, typology, description);
+    newTrainingQuery(name,muscleGroup, typology, description ,imgName);
 
     res.send({
-        status:'ok',
-        message:`The training ${name} has been created succsefully`
-    })
+      status:'ok',
+      message:`The training ${name} has been created succsefully`
+  })
 
-}catch(err){
-  next(err);
-}
+  }catch(err){
+
+    next(err);
+
+  }
+
 }
 module.exports = {
   newTraining
