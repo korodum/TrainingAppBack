@@ -8,5 +8,7 @@
   "parserOptions": {
       "ecmaVersion": "latest"
   },
-  "rules": {}
+  "rules": {
+    "no-unused-vars":["error", {"argsIgnorePatterns": "next" }]
+  }
 }

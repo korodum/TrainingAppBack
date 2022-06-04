@@ -29,6 +29,7 @@ app.use(fileUpload())
 const {
   createNewUser,
   login,
+  deleteUser,
 } =
 require('./controllers/usersControllers')
 
@@ -36,7 +37,10 @@ require('./controllers/usersControllers')
 app.post('/users', createNewUser);
 
 // Login de usuario
-app.post('/login', login)
+app.post('/login', login);
+
+// Eliminar al usuario
+app.delete('/users/delete', deleteUser);
 /*
 *##########################
 *## Trainings Endpoints ###
