@@ -30,6 +30,7 @@ const {
   createNewUser,
   login,
   deleteUser,
+  listUsers,
 } =
 require('./controllers/usersControllers')
 
@@ -41,6 +42,9 @@ app.post('/login', login);
 
 // Eliminar al usuario
 app.delete('/users/delete', deleteUser);
+
+// Lista de usuarios
+app.get('/users/list', listUsers);
 /*
 *##########################
 *## Trainings Endpoints ###
