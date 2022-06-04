@@ -77,7 +77,7 @@ Implement and API that allow to manage (publish, modify, delete, vote and filter
 
 ### Endpoints of users (trainer)
 
--  **POST** > [/trainings/:idTraining/add] - Add training. [ _**With trainer token**_ ]
+-  **POST** > [/trainings/add] - Add training. [ _**With trainer token**_ ]
 -  **GET** > [/trainings/:idTraining] - Add training. [ _**With trainer token**_ ]
 - **PUT** > [/trainings/:idTraining/modify] - Modify training [ _**With trainer token**_ ]
 - **DELETE** > [/trainings/:idTraining/delete] - Delete training [ _**With trainer token**_ ]
