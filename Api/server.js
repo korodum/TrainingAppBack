@@ -60,10 +60,10 @@ const {
 app.post('/trainings', authUser, isAdmin, newTraining);
 
 //select a training by name
-app.get('/trainings?:name', selectTrainingByName);
+app.get('/trainings/:name', selectTrainingByName);
 
 //list trainings by muscle group
-app.get('/trainings/muscleGroup/:muscleGroup',listTrainingsByMuscleGroup)
+app.get('/trainings/:muscleGroup',listTrainingsByMuscleGroup)
 
 
 

@@ -12,7 +12,7 @@ const selectTrainingByNameQuery = async (name) => {
     )
       console.log(trainings)
     if (trainings.length < 1) {
-     throw generateError ('training not found', 404)
+     throw generateError ('training not found', 404);
     }
 
     return trainings [0];
