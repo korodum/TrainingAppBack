@@ -7,12 +7,14 @@ const selectTrainingByNameQuery = async (name) => {
 
   try {
     connection = await getConnection();
+
+
     const [trainings] = await connection.query(
       `SELECT * FROM trainings WHERE name = ?`,[name]
     )
-      console.log(trainings)
+      console.log('trainings', trainings)
     if (trainings.length < 1) {
-     throw generateError ('training not found', 404);
+      throw generateError ('training not found', 404);
     }
 
     return trainings [0];

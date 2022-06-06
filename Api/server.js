@@ -53,7 +53,8 @@ app.get('/users/list', listUsers);
 const {
   newTraining,
   selectTrainingByName,
-  listTrainingsByMuscleGroup
+  listTrainingsByMuscleGroup,
+  listTrainingsByTypology
 } = require('./controllers/trainingsControllers');
 
 // create a new training
@@ -63,9 +64,10 @@ app.post('/trainings', authUser, isAdmin, newTraining);
 app.get('/trainings/:trainingName', selectTrainingByName);
 
 //list trainings by muscle group
-app.get('/trainings/:muscleGroup',listTrainingsByMuscleGroup)
+app.get('/trainings/muscleGroup/:muscleGroup',listTrainingsByMuscleGroup)
 
-
+//list trainings by typology
+app.get('/trainings/typology/:typology',listTrainingsByTypology)
 
 /*
 *######################

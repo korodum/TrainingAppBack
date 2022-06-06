@@ -2,9 +2,8 @@ const {listTrainingsByMuscleGroupQuery} = require('../../db/trainingQueries/list
 
 const listTrainingsByMuscleGroup = async ( req, res, next ) => {
   try {
-    const { muscleGroup } = req.query;
-    console.log(muscleGroup)
-    const { trainings} = await listTrainingsByMuscleGroup(muscleGroup);
+    const { muscleGroup } = req.params;
+    const trainings = await listTrainingsByMuscleGroupQuery(muscleGroup);
 
     res.send({
       statue:'ok',
