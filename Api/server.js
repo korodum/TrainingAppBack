@@ -31,6 +31,7 @@ const {
   login,
   deleteUser,
   listUsers,
+  modifyUser,
 } =
 require('./controllers/usersControllers')
 
@@ -45,9 +46,12 @@ app.delete('/users/delete', deleteUser);
 
 // Lista de usuarios
 app.get('/users/list', listUsers);
+
+// Lista de usuarios
+app.put('/users/modify/', authUser, modifyUser);
 /*
 *##########################
-*## Trainings Endpoints ###
+*## Trainings Endpoints ### 
 *##########################
 */
 const {
