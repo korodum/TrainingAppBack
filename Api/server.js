@@ -52,10 +52,20 @@ app.get('/users/list', listUsers);
 */
 const {
   newTraining,
+  selectTrainingByName,
+  listTrainingsByMuscleGroup
 } = require('./controllers/trainingsControllers');
 
 // create a new training
 app.post('/trainings', authUser, isAdmin, newTraining);
+
+//select a training by name
+app.get('/trainings?:name', selectTrainingByName);
+
+//list trainings by muscle group
+app.get('/trainings/muscleGroup/:muscleGroup',listTrainingsByMuscleGroup)
+
+
 
 /*
 *######################

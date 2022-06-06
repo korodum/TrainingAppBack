@@ -30,7 +30,7 @@ async function main() {
         await connection.query(`
         CREATE TABLE IF NOT EXISTS trainings(
             id INT PRIMARY KEY AUTO_INCREMENT,
-            name VARCHAR(25) NOT NULL,
+            name VARCHAR(25) UNIQUE NOT NULL,
             description VARCHAR(300) NOT NULL,
             typology ENUM('strength','flexibility','cardio','resistance','equilibrium','recovery') DEFAULT 'strength',
             muscleGroup ENUM('back','chest','arms','shoulders','legs'),
