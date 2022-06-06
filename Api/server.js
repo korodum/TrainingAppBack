@@ -54,7 +54,8 @@ const {
   newTraining,
   selectTrainingByName,
   listTrainingsByMuscleGroup,
-  listTrainingsByTypology
+  listTrainingsByTypology,
+  deleteTrainingByName,
 } = require('./controllers/trainingsControllers');
 
 // create a new training
@@ -68,6 +69,9 @@ app.get('/trainings/muscleGroup/:muscleGroup',listTrainingsByMuscleGroup)
 
 //list trainings by typology
 app.get('/trainings/typology/:typology',listTrainingsByTypology)
+
+//delete training by name
+app.delete('/trainings/:trainingName', deleteTrainingByName);
 
 /*
 *######################
