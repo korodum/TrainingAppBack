@@ -2,10 +2,10 @@ const { selectTrainingByNameQuery } = require('../../db/trainingQueries/selectTr
 
 const selectTrainingByName = async (req, res, next) => {
   try {
-    const { trainingName } = req.params
+    const { name } = req.params
 
-    const training = await selectTrainingByNameQuery(trainingName);
-
+    const training = await selectTrainingByNameQuery(name);
+    console.log('HOLA MODERFUKER')
     res.send({
       status: 'ok',
       data: {

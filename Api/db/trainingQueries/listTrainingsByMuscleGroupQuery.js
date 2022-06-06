@@ -9,7 +9,7 @@ const listTrainingsByMuscleGroupQuery = async (muscleGroup) => {
     connection = await getConnection();
 
   const [trainings] = await connection.query(`SELECT name FROM trainings WHERE muscleGroup = ?`,[muscleGroup]);
-    con
+
   return trainings;
   } finally {
     if (connection) connection.require();

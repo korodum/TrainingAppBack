@@ -11,7 +11,7 @@ const newTrainingQuery = async (name, muscleGroup, typology, description, image 
     const [trainings] = await connection.query(`
       SELECT id FROM trainings WHERE name = ?
     `,[name]);
-
+    console.log(trainings)
     if(trainings.length > 0) throw generateError('A training with the same name already exists', 409);
 
     const [newTraining] = await connection.query(`

@@ -5,12 +5,15 @@ const { generateError } = require('../../helpers')
 const selectTrainingByNameQuery = async (name) => {
   let connection;
 
+  console.log('HOLA QUE PASO WEY?')
   try {
     connection = await getConnection();
+
+
     const [trainings] = await connection.query(
       `SELECT * FROM trainings WHERE name = ?`,[name]
     )
-      console.log(trainings)
+      console.log('trainings', trainings)
     if (trainings.length < 1) {
      throw generateError ('training not found', 404);
     }
