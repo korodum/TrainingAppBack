@@ -5,7 +5,6 @@ const selectTrainingByName = async (req, res, next) => {
     const { name } = req.params
 
     const training = await selectTrainingByNameQuery(name);
-    console.log('HOLA MODERFUKER')
     res.send({
       status: 'ok',
       data: {

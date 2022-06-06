@@ -5,7 +5,6 @@ const { generateError } = require('../../helpers')
 const selectTrainingByNameQuery = async (name) => {
   let connection;
 
-  console.log('HOLA QUE PASO WEY?')
   try {
     connection = await getConnection();
 
