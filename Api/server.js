@@ -47,8 +47,9 @@ app.delete('/users/delete', deleteUser);
 // Lista de usuarios
 app.get('/users/list', listUsers);
 
-// Lista de usuarios
+// Modificar un usuario
 app.put('/users/modify/:id', authUser, modifyUser);
+
 /*
 *##########################
 *## Trainings Endpoints ### 
