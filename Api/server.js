@@ -42,7 +42,7 @@ app.post('/users', createNewUser);
 app.post('/login', login);
 
 // Eliminar al usuario
-app.delete('/users/delete', deleteUser);
+app.delete('/users/delete/:id', deleteUser);
 
 // Lista de usuarios
 app.get('/users/list', listUsers);
