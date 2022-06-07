@@ -1,7 +1,7 @@
 const {selectTrainingByNameQuery} = require ('../../db/trainingQueries/selectTrainingByNameQuery.js');
 const { deleteTrainingByNameQuery} = require ('../../db/trainingQueries/deleteTrainingByNameQuery.js');
 
-const { generateError, deletePhoto } = require ('../../helpers');
+const { deletePhoto } = require ('../../helpers');
 
 const deleteTrainingByName = async (req, res, next) => {
   try {
