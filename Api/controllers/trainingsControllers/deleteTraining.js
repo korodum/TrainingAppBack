@@ -1,17 +1,17 @@
-const {selectTrainingByNameQuery} = require ('../../db/trainingQueries/selectTrainingByNameQuery.js');
-const { deleteTrainingByNameQuery} = require ('../../db/trainingQueries/deleteTrainingByNameQuery.js');
+const {selectTrainingByIdQuery} = require ('../../db/trainingQueries/selectTrainingByIdQuery.js');
+const { deleteTrainingByIdQuery} = require ('../../db/trainingQueries/deleteTrainingByIdQuery.js');
 
 const { deletePhoto } = require ('../../helpers');
 
-const deleteTrainingByName = async (req, res, next) => {
+const deleteTrainingById = async (req, res, next) => {
   try {
-    const {trainingName} = req.params;
+    const {trainingId} = req.params;
 
-    const training = await selectTrainingByNameQuery( trainingName);
+    const training = await selectTrainingByIdQuery( trainingId );
+    console.log(training.image)
+    if(training.image) await deletePhoto( training.image)
 
-    if(training.image) await deletePhoto( training.image);
-
-    await deleteTrainingByNameQuery( trainingName);
+    await deleteTrainingByIdQuery( trainingId );
 
     res.send({
       status: 'success',
@@ -24,5 +24,5 @@ const deleteTrainingByName = async (req, res, next) => {
 }
 
 module.exports = {
-  deleteTrainingByName
+  deleteTrainingById
 }

@@ -2,7 +2,7 @@ const { getConnection } = require('../getConnection');
 
 const { generateError } = require('../../helpers')
 
-const selectTrainingByNameQuery = async (name) => {
+const selectTrainingByIdQuery = async (id) => {
   let connection;
 
   try {
@@ -10,9 +10,9 @@ const selectTrainingByNameQuery = async (name) => {
 
 
     const [trainings] = await connection.query(
-      `SELECT * FROM trainings WHERE name = ?`,[name]
+      `SELECT * FROM trainings WHERE id = ?`,[id]
     )
-      console.log('trainings', trainings)
+
     if (trainings.length < 1) {
       throw generateError ('training not found', 404);
     }
@@ -25,5 +25,5 @@ const selectTrainingByNameQuery = async (name) => {
 }
 
 module.exports = {
-  selectTrainingByNameQuery
+  selectTrainingByIdQuery
 };

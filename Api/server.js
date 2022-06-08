@@ -57,17 +57,17 @@ app.put('/users/modify/:id', authUser, modifyUser);
 */
 const {
   newTraining,
-  selectTrainingByName,
+  selectTrainingById,
   listTrainingsByMuscleGroup,
   listTrainingsByTypology,
-  deleteTrainingByName,
+  deleteTrainingById,
 } = require('./controllers/trainingsControllers');
 
 // create a new training
 app.post('/trainings', authUser, isAdmin, newTraining);
 
 //select a training by name
-app.get('/trainings/:trainingName', selectTrainingByName);
+app.get('/trainings/:trainingId', selectTrainingById);
 
 //list trainings by muscle group
 app.get('/trainings/muscleGroup/:muscleGroup',listTrainingsByMuscleGroup)
@@ -76,7 +76,7 @@ app.get('/trainings/muscleGroup/:muscleGroup',listTrainingsByMuscleGroup)
 app.get('/trainings/typology/:typology',listTrainingsByTypology)
 
 //delete training by name
-app.delete('/trainings/:trainingName', deleteTrainingByName);
+app.delete('/trainings/:trainingId', deleteTrainingById);
 
 /*
 *######################
