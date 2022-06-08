@@ -52,14 +52,13 @@ app.put('/users/modify/:id', authUser, modifyUser);
 
 /*
 *##########################
-*## Trainings Endpoints ### 
+*## Trainings Endpoints ###
 *##########################
 */
 const {
   newTraining,
   selectTrainingById,
-  listTrainingsByMuscleGroup,
-  listTrainingsByTypology,
+  listTrainings,
   deleteTrainingById,
 } = require('./controllers/trainingsControllers');
 
@@ -69,11 +68,10 @@ app.post('/trainings', authUser, isAdmin, newTraining);
 //select a training by name
 app.get('/trainings/:trainingId', selectTrainingById);
 
-//list trainings by muscle group
-app.get('/trainings/muscleGroup/:muscleGroup',listTrainingsByMuscleGroup)
+//list trainings
+app.get('/trainings',listTrainings)
 
-//list trainings by typology
-app.get('/trainings/typology/:typology',listTrainingsByTypology)
+
 
 //delete training by name
 app.delete('/trainings/:trainingId', deleteTrainingById);

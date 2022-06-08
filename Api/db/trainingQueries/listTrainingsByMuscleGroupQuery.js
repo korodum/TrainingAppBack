@@ -8,7 +8,7 @@ const listTrainingsByMuscleGroupQuery = async (muscleGroup) => {
   try {
     connection = await getConnection();
 
-  const [trainings] = await connection.query(`SELECT * FROM trainings WHERE muscleGroup = ?`,[muscleGroup]);
+    const [trainings] = await connection.query(`SELECT * FROM trainings WHERE muscleGroup = ?`,[muscleGroup]);
 
   if (trainings.length < 1) {
     throw generateError ('training not found', 404);
