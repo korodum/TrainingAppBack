@@ -61,6 +61,7 @@ const {
   listTrainingsByMuscleGroup,
   listTrainingsByTypology,
   deleteTrainingByName,
+  likes
 } = require('./controllers/trainingsControllers');
 
 // create a new training
@@ -90,6 +91,7 @@ app.delete('/trainings/:trainingName', deleteTrainingByName);
 *######################
 */
 
+app.post('/trainings/:idTraining/likes', authUser, likes)
 
 /*
 *######################

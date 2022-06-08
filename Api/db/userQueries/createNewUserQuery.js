@@ -22,12 +22,9 @@ const createNewUserQuery = async (name,email,password, role) =>{
         const hasedPassword = await bcrypt.hash(password,10);
 
         // Creamos el usuario
-        const [newUser] = await connection.query(`
+        await connection.query(`
             INSERT INTO users (name,email,password, role) VALUES(?,?,?,?)
         `, [name,email,hasedPassword, role]);
-
-        //Retornamos el id del user
-        return newUser.inserId;
 
         }finally{
             if(connection) connection.release();
