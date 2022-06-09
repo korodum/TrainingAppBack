@@ -48,7 +48,7 @@ app.delete('/users/delete/:idUser', deleteUser);
 app.get('/users/list', listUsers);
 
 // Modificar un usuario
-app.put('/users/modify/:id', authUser, modifyUser);
+app.put('/users/modify/:idUser', authUser, modifyUser);
 
 /*
 *##########################
