@@ -1,8 +1,8 @@
-const {createNewUserQuery} = require('../../db/userQueries/createNewUserQuery');
+const {registerQuery} = require('../../db/userQueries/registerQuery');
 
 const generateError = require('../../helpers');
 
-const createNewUser = async (req,res,next)=>{
+const register = async (req,res,next)=>{
     try{
         // Recogemos los campos del body.
         const {name,email,password,role} = req.body;
@@ -12,7 +12,7 @@ const createNewUser = async (req,res,next)=>{
 
 
         // Creamos un usuario en la base de datos.
-        await createNewUserQuery(name,email,password,role);
+        await registerQuery(name,email,password,role);
         res.send({
             status:'ok',
             message:`The user ${name} with the role ${role} ahs been created succsefully`,
@@ -22,4 +22,4 @@ const createNewUser = async (req,res,next)=>{
     }catch(error){next(error)}
 };
 
-module.exports = createNewUser;
+module.exports = {register};
