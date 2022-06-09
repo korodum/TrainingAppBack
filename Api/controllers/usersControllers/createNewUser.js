@@ -12,11 +12,10 @@ const createNewUser = async (req,res,next)=>{
 
 
         // Creamos un usuario en la base de datos.
-        const user = createNewUserQuery(name,email,password,role);
-
+        await createNewUserQuery(name,email,password,role);
         res.send({
             status:'ok',
-            message:`The user ${name} with the role ${role} ahs been created succsefully`
+            message:`The user ${name} with the role ${role} ahs been created succsefully`,
         })
 
 

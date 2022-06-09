@@ -30,7 +30,7 @@ async function main() {
         await connection.query(`
         CREATE TABLE IF NOT EXISTS trainings(
             id INT PRIMARY KEY AUTO_INCREMENT,
-            name VARCHAR(25) UNIQUE NOT NULL,
+            name VARCHAR(50) UNIQUE NOT NULL,
             description VARCHAR(300) NOT NULL,
             typology ENUM('strength','flexibility','cardio','resistance','equilibrium','recovery') DEFAULT 'strength',
             muscleGroup ENUM('back','chest','arms','shoulders','legs'),
@@ -57,11 +57,14 @@ async function main() {
         `)
         await connection.query(`
         CREATE TABLE IF NOT EXISTS likes(
-            id  INT PRIMARY KEY AUTO_INCREMENT,
+            id INT PRIMARY KEY AUTO_INCREMENT,
             idUser INT NOT NULL,
             idTraining INT NOT NULL,
             FOREIGN KEY (idUser) REFERENCES users(id),
-            FOREIGN KEY (idTraining) REFERENCES trainings(id)
+            FOREIGN KEY (idTraining) REFERENCES trainings(id),
+            vote BOOLEAN DEFAULT TRUE,
+            createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+            modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP
         )
         `)
         console.log('Tables created susccesfully')
