@@ -4,7 +4,7 @@ const {getConnection} = require('../getConnection');
 
 const { generateError } = require('../../helpers');
 
-const createNewUserQuery = async (name,email,password, role) =>{
+const registerQuery = async (name,email,password, role) =>{
 
     // Variable para almacenar la conexion.
     let connection;
@@ -32,5 +32,5 @@ const createNewUserQuery = async (name,email,password, role) =>{
         }
 }
 module.exports = {
-    createNewUserQuery
+    registerQuery
 }

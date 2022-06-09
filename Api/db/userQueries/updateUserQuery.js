@@ -32,4 +32,4 @@ const selectUserQuery = async ( id, name, email )=>{
     }
 }
 
-module.exports = selectUserQuery;
+module.exports = {selectUserQuery};

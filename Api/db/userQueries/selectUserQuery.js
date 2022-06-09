@@ -22,4 +22,4 @@ const selectUserQuery = async (  )=>{
     }
 }
 
-module.exports = selectUserQuery;
+module.exports = {selectUserQuery};
