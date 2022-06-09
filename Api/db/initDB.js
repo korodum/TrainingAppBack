@@ -23,7 +23,8 @@ async function main() {
             password VARCHAR(100) NOT NULL,
             email VARCHAR(100) UNIQUE NOT NULL,
             role ENUM('admin','trainer','user') DEFAULT 'user',
-            createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
+            createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+            modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP
             )
         `)
 
@@ -35,7 +36,8 @@ async function main() {
             typology ENUM('strength','flexibility','cardio','resistance','equilibrium','recovery') DEFAULT 'strength',
             muscleGroup ENUM('back','chest','arms','shoulders','legs'),
             image VARCHAR(100),
-            createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
+            createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+            modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP
             )
         `);
 
@@ -45,15 +47,24 @@ async function main() {
             name VARCHAR(25) NOT NULL,
             description VARCHAR(300) NOT NULL,
             typology ENUM('strength','flexibility','cardio','resistance','equilibrium','recovery') DEFAULT 'strength',
-            muscleGroup ENUM('back','chest','arms','shoulders','legs'),
             trainerId INT,
-            trainingId INT NOT NULL,
             userId INT,
             FOREIGN KEY (trainerId) REFERENCES users(id),
-            FOREIGN KEY (trainingId)REFERENCES trainings(id),
             FOREIGN KEY (userId) REFERENCES users(id),
-            createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
+            createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+            modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP
             )
+        `)
+        await connection.query(`
+        CREATE TABLE IF NOT EXISTS planTrainings(
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            idPlan INT NOT NULL,
+            idTraining INT NOT NULL,
+            FOREIGN KEY (idPlan) REFERENCES plans(id),
+            FOREIGN KEY (idTraining) REFERENCES trainings(id),
+            createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+            modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP
+        )
         `)
         await connection.query(`
         CREATE TABLE IF NOT EXISTS likes(
