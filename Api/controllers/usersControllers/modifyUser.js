@@ -1,5 +1,6 @@
-const  updateUserQuery = require('../../db/userQueries/updateUserQuery');
-const {getConnection} = require('../../db/getConnection')
+const  {updateUserQuery} = require('../../db/userQueries/updateUserQuery');
+const {getConnection} = require('../../db/getConnection');
+
 const modifyUser = async (req,res,next) =>{
     let connection;
     try{
@@ -28,4 +29,4 @@ const modifyUser = async (req,res,next) =>{
     }
 }
 
-module.exports = modifyUser;
+module.exports = {modifyUser};
