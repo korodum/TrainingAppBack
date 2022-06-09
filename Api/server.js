@@ -66,12 +66,11 @@ const {
 // create a new training
 app.post('/trainings', authUser, isAdmin, newTraining);
 
-//select a training by name
-app.get('/trainings/:trainingId', selectTrainingById);
-
 //list trainings
 app.get('/trainings',listTrainings)
 
+//select a training by name
+app.get('/trainings/:trainingId', selectTrainingById);
 
 
 //delete training by name

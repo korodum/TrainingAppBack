@@ -45,7 +45,7 @@ async function main() {
         CREATE TABLE IF NOT EXISTS plans(
             id INT PRIMARY KEY AUTO_INCREMENT,
             name VARCHAR(25) NOT NULL,
-            description VARCHAR(300) NOT NULL,
+            description VARCHAR(300) ,
             typology ENUM('strength','flexibility','cardio','resistance','equilibrium','recovery') DEFAULT 'strength',
             trainerId INT,
             userId INT,
