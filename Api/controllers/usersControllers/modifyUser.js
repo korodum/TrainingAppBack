@@ -7,10 +7,10 @@ const modifyUser = async (req,res,next) =>{
         connection = await getConnection();
         // Destructuring del id recogido de los params
         const {id} = req.params;
-        
+
         //Destructuring de los datos que recibimos del body
         const { name, email } = req.body;
-        
+
         if(!email){
             const [currentEmail] = await connection.query(`SELECT email FROM users WHERE id= ?`, [id]);
             console.log(`Current email is ${currentEmail}`, currentEmail)

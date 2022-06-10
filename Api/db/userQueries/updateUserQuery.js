@@ -2,9 +2,9 @@ const {getConnection} = require('../getConnection');
 
 const {generateError} = require('../../helpers');
 
-const selectUserQuery = async ( id, name, email )=>{
+const updateUserQuery = async ( id, name, email )=>{
     let connection;
-    
+
     try {
         //Nos conectamos
         connection = await getConnection();
@@ -17,7 +17,7 @@ const selectUserQuery = async ( id, name, email )=>{
 
         // Actualizamos los datos.
         await connection.query(`
-            UPDATE users SET 
+            UPDATE users SET
             name = ?,
             email = ?
             WHERE
@@ -32,4 +32,4 @@ const selectUserQuery = async ( id, name, email )=>{
     }
 }
 
-module.exports = {selectUserQuery};
+module.exports = {updateUserQuery};

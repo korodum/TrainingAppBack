@@ -37,13 +37,13 @@ const {
 require('./controllers/usersControllers')
 
 // Registramos un usuario.
-app.post('/register', register);
+app.post('/register', authUser, isAdmin, register);
 
 // Login de usuario
 app.post('/login', login);
 
 // Lista de usuarios
-app.get('/users/list', isTrainer,  listUsers);
+app.get('/users/list', authUser,isAdmin, listUsers);
 
 // Modificar un usuario
 app.put('/users/modify/:id', authUser, modifyUser);

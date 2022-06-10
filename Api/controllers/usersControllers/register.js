@@ -1,6 +1,6 @@
 const {registerQuery} = require('../../db/userQueries/registerQuery');
 
-const generateError = require('../../helpers');
+const {generateError} = require('../../helpers');
 
 const register = async (req,res,next)=>{
     try{
@@ -15,7 +15,7 @@ const register = async (req,res,next)=>{
         await registerQuery(name,email,password,role);
         res.send({
             status:'ok',
-            message:`The user ${name} with the role ${role} ahs been created succsefully`,
+            message:`The user ${name} with the role ${role} has been created succsefully`,
         })
 
 
