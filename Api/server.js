@@ -27,7 +27,7 @@ const  {authUser} = require('./middlewares/authUser')
 *######################
 */
 const {
-  createNewUser,
+  register,
   login,
   deleteUser,
   listUsers,
@@ -35,14 +35,14 @@ const {
 } =
 require('./controllers/usersControllers')
 
-// Creamos un nuevo usuario.
-app.post('/users', createNewUser);
+// Registramos un usuario.
+app.post('/register', register);
 
 // Login de usuario
 app.post('/login', login);
 
 // Eliminar al usuario
-app.delete('/users/delete/:id', deleteUser);
+app.delete('/users/delete/:idUser', deleteUser);
 
 // Lista de usuarios
 app.get('/users/list', listUsers);
@@ -60,7 +60,6 @@ const {
   selectTrainingById,
   listTrainings,
   deleteTrainingById,
-  likes
 } = require('./controllers/trainingsControllers');
 
 // create a new training
@@ -88,7 +87,9 @@ app.delete('/trainings/:trainingId', deleteTrainingById);
 *## Likes Endpoints ###
 *######################
 */
-
+const {
+  likes,
+} = require('./controllers/likes')
 app.post('/trainings/:idTraining/likes', authUser, likes)
 
 /*

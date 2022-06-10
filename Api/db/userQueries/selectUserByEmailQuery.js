@@ -24,4 +24,4 @@ const selectUserByEmailQuery = async ( email )=>{
     }
 }
 
-module.exports = selectUserByEmailQuery;
+module.exports = {selectUserByEmailQuery};
