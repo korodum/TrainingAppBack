@@ -42,14 +42,14 @@ app.post('/users', createNewUser);
 // Login de usuario
 app.post('/login', login);
 
-// Eliminar al usuario
-app.delete('/users/delete/:id', deleteUser);
-
 // Lista de usuarios
-app.get('/users/list', listUsers);
+app.get('/users/list', isTrainer,  listUsers);
 
 // Modificar un usuario
 app.put('/users/modify/:id', authUser, modifyUser);
+
+// Eliminar al usuario
+app.delete('/users/delete/:id', deleteUser);
 
 /*
 *##########################
@@ -61,21 +61,20 @@ const {
   selectTrainingById,
   listTrainings,
   deleteTrainingById,
-  likes
 } = require('./controllers/trainingsControllers');
 
 // create a new training
 app.post('/trainings', authUser, isAdmin, newTraining);
 
 //list trainings
-app.get('/trainings',listTrainings)
+app.get('/trainings', authUser, listTrainings)
 
 //select a training by name
-app.get('/trainings/:trainingId', selectTrainingById);
+app.get('/trainings/:trainingId', authUser, selectTrainingById);
 
 
 //delete training by name
-app.delete('/trainings/:trainingId', deleteTrainingById);
+app.delete('/trainings/:trainingId', authUser, isAdmin, deleteTrainingById);;;
 
 /*
 *######################
@@ -88,6 +87,9 @@ app.delete('/trainings/:trainingId', deleteTrainingById);
 *## Likes Endpoints ###
 *######################
 */
+const {
+  likes,
+} = require('./controllers/likesControllers/')
 
 app.post('/trainings/:idTraining/likes', authUser, likes)
 
