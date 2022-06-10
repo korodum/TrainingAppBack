@@ -21,6 +21,7 @@ app.use(fileUpload())
 */
 const  {isAdmin} = require('./middlewares/isAdmin')
 const  {authUser} = require('./middlewares/authUser')
+const { isTrainer } = require('./middlewares/isTrainer')
 /*
 *######################
 *## Users Endpoints ###
