@@ -10,7 +10,6 @@ const generateError = (message, status)=>{
 const createPathIfNotExists = async (path) => {
 
     try {
-
         await fs.access(path);
     } catch {
         await fs.mkdir(path);
