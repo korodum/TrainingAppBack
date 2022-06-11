@@ -1,9 +1,9 @@
 const {getConnection} = require('../getConnection');
 
 const {generateError} = require('../../helpers');
-const req = require('express/lib/request');
 
-const updateUserQuery = async ( idUser, nameUser, emailUser, nameUserToken ,emailUserToken )=>{
+
+const updateUserQuery = async ( idUser, nameUser, emailUser )=>{
     let connection;
     
     try {
@@ -12,7 +12,7 @@ const updateUserQuery = async ( idUser, nameUser, emailUser, nameUserToken ,emai
 
         // Seleccionamos el usuario mediante id con su nombre y email
         const [users] = await connection.query(`SELECT * FROM users WHERE id = ?`, [idUser]);
-        console.log('USUARIO', users[0].email)
+        
         // Si no hay usuario devolvemos un error
         if(users.length===0) throw generateError('No users found :(', 404);
 
