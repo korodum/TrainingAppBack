@@ -13,6 +13,7 @@ const modifyUser = async (req,res,next) =>{
 
         if(!email){
             const [currentEmail] = await connection.query(`SELECT email FROM users WHERE id= ?`, [id]);
+            email = currentEmail
             console.log(`Current email is ${currentEmail}`, currentEmail)
         }
         // Llamamos a nuestra query con los parametros del body

@@ -21,7 +21,6 @@ app.use(fileUpload())
 */
 const  {isAdmin} = require('./middlewares/isAdmin')
 const  {authUser} = require('./middlewares/authUser')
-const { isTrainer } = require('./middlewares/isTrainer')
 /*
 *######################
 *## Users Endpoints ###
@@ -60,6 +59,7 @@ const {
   newTraining,
   selectTrainingById,
   listTrainings,
+  modifyTraining,
   deleteTrainingById,
 } = require('./controllers/trainingsControllers');
 
@@ -72,6 +72,8 @@ app.get('/trainings', authUser, listTrainings)
 //select a training by name
 app.get('/trainings/:trainingId', authUser, selectTrainingById);
 
+//modify a training
+app.put('/trainings/:trainingId', authUser, isAdmin, modifyTraining)
 
 //delete training by name
 app.delete('/trainings/:trainingId', authUser, isAdmin, deleteTrainingById);;;
@@ -81,6 +83,12 @@ app.delete('/trainings/:trainingId', authUser, isAdmin, deleteTrainingById);;;
 *## Plans Endpoints ###
 *######################
 */
+// const {
+//   createPlan
+// } = require('./controllers/planControllers');
+
+//create a new plan
+//app.post('/plans',authUser, isAdmin, createPlan);
 
 /*
 *######################
