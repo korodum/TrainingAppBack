@@ -14,7 +14,7 @@ const modifyTrainingQuery = async (id, name, description, typology, muscleGroup)
       name = name || trainings[0].name;
       description = description || trainings[0].description;
       typology = typology || trainings[0].typology;
-      muscleGroup = muscleGroup || trainings[0].typology;
+      muscleGroup = muscleGroup || trainings[0].muscleGroup;
 
 
     await connection.query(`

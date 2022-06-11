@@ -15,7 +15,7 @@ const modifyTraining = async ( req, res, next ) => {
 
     res.send({
       status: 'ok',
-      message: `training ${trainingId} was successfully modified`
+      message: `training ${name} was successfully modified`
     })
   } catch (error) {
     next(error);
