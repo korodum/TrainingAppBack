@@ -36,53 +36,59 @@ const {
 require('./controllers/usersControllers')
 
 // Registramos un usuario.
-app.post('/register', register);
+app.post('/register', authUser, isAdmin, register);
 
 // Login de usuario
 app.post('/login', login);
 
-// Eliminar al usuario
-app.delete('/users/delete/:idUser', deleteUser);
-
 // Lista de usuarios
-app.get('/users/list', listUsers);
+app.get('/users/list', authUser,isAdmin, listUsers);
 
 // Modificar un usuario
 app.put('/users/modify/:idUser', authUser, modifyUser);
 
+// Eliminar al usuario
+app.delete('/users/delete/:id', deleteUser);
+
 /*
 *##########################
-*## Trainings Endpoints ### 
+*## Trainings Endpoints ###
 *##########################
 */
 const {
   newTraining,
   selectTrainingById,
-  listTrainingsByMuscleGroup,
-  listTrainingsByTypology,
+  listTrainings,
+  modifyTraining,
   deleteTrainingById,
 } = require('./controllers/trainingsControllers');
 
 // create a new training
 app.post('/trainings', authUser, isAdmin, newTraining);
 
+//list trainings
+app.get('/trainings', authUser, listTrainings)
+
 //select a training by name
-app.get('/trainings/:trainingId', selectTrainingById);
+app.get('/trainings/:trainingId', authUser, selectTrainingById);
 
-//list trainings by muscle group
-app.get('/trainings/muscleGroup/:muscleGroup',listTrainingsByMuscleGroup)
-
-//list trainings by typology
-app.get('/trainings/typology/:typology',listTrainingsByTypology)
+//modify a training
+app.put('/trainings/:trainingId', authUser, isAdmin, modifyTraining)
 
 //delete training by name
-app.delete('/trainings/:trainingId', deleteTrainingById);
+app.delete('/trainings/:trainingId', authUser, isAdmin, deleteTrainingById);;;
 
 /*
 *######################
 *## Plans Endpoints ###
 *######################
 */
+// const {
+//   createPlan
+// } = require('./controllers/planControllers');
+
+//create a new plan
+//app.post('/plans',authUser, isAdmin, createPlan);
 
 /*
 *######################
@@ -91,7 +97,8 @@ app.delete('/trainings/:trainingId', deleteTrainingById);
 */
 const {
   likes,
-} = require('./controllers/likes')
+} = require('./controllers/likesControllers/')
+
 app.post('/trainings/:idTraining/likes', authUser, likes)
 
 /*

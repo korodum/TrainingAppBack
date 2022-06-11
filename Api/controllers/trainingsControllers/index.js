@@ -1,13 +1,13 @@
 const { newTraining } = require('../trainingsControllers/newTraining');
 const { selectTrainingById } = require('./selectTrainingById.js');
-const{ listTrainingsByMuscleGroup } = require('../trainingsControllers/listTrainingsByMuscleGroup')
-const { listTrainingsByTypology } = require('./listTrainingsByTypology')
-const { deleteTrainingById } = require('../trainingsControllers/deleteTraining')
+const { listTrainings } = require('./listTrainings.js');
+const { modifyTraining } = require('./modifyTraining');
+const { deleteTrainingById } = require('./deleteTraining');
 
 module.exports = {
   newTraining,
   selectTrainingById,
-  listTrainingsByMuscleGroup,
-  listTrainingsByTypology,
+  listTrainings,
+  modifyTraining,
   deleteTrainingById,
 }

@@ -5,7 +5,7 @@ const {generateError} = require('../../helpers');
 
 const updateUserQuery = async ( idUser, nameUser, emailUser )=>{
     let connection;
-    
+
     try {
         //Nos conectamos
         connection = await getConnection();
@@ -21,7 +21,7 @@ const updateUserQuery = async ( idUser, nameUser, emailUser )=>{
 
         // Actualizamos los datos.
         await connection.query(`
-            UPDATE users SET 
+            UPDATE users SET
             name = ?,
             email = ?
             WHERE

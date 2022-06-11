@@ -11,9 +11,9 @@ async function main() {
 
         console.log('Deleting existing tables');
 
-        await connection.query('DROP TABLE IF EXISTS likes')
-        await connection.query('DROP TABLE IF EXISTS plans')
-        await connection.query('DROP TABLE IF EXISTS trainings')
+        await connection.query('DROP TABLE IF EXISTS likes');
+        await connection.query('DROP TABLE IF EXISTS plans');
+        await connection.query('DROP TABLE IF EXISTS trainings');
         await connection.query('DROP TABLE IF EXISTS users');
 
         await connection.query(`
@@ -26,7 +26,7 @@ async function main() {
             createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
             modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP
             )
-        `)
+        `);
 
         await connection.query(`
         CREATE TABLE IF NOT EXISTS trainings(
@@ -45,7 +45,7 @@ async function main() {
         CREATE TABLE IF NOT EXISTS plans(
             id INT PRIMARY KEY AUTO_INCREMENT,
             name VARCHAR(25) NOT NULL,
-            description VARCHAR(300) NOT NULL,
+            description VARCHAR(300) ,
             typology ENUM('strength','flexibility','cardio','resistance','equilibrium','recovery') DEFAULT 'strength',
             trainerId INT,
             userId INT,
@@ -54,7 +54,7 @@ async function main() {
             createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
             modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP
             )
-        `)
+        `);
         await connection.query(`
         CREATE TABLE IF NOT EXISTS planTrainings(
             id INT PRIMARY KEY AUTO_INCREMENT,
@@ -65,7 +65,7 @@ async function main() {
             createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
             modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP
         )
-        `)
+        `);
         await connection.query(`
         CREATE TABLE IF NOT EXISTS likes(
             id INT PRIMARY KEY AUTO_INCREMENT,
@@ -77,8 +77,8 @@ async function main() {
             createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
             modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP
         )
-        `)
-        console.log('Tables created susccesfully')
+        `);
+        console.log('Tables created susccesfully');
 
     } catch (error) {
         console.error(error);

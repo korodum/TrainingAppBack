@@ -1,4 +1,4 @@
-const likesQuery = require('../../db/likesQueries/likesQueries');
+const likesQuery = require('../../db/likesQueries/likesQuery');
 
 
 const likes = async (req,res,next)=>{
