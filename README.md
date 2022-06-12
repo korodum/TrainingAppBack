@@ -5,6 +5,20 @@
 ## ABOUT ✍️
 ###  Description
 Implement and API that allow to manage (publish, modify, delete, vote and filter) trainings on a gym.
+run
+```
+$npm i
+```
+to install the necessary dependencies, then run the following command to initialize the data base
+```
+$npm run db
+```
+and last to start the server run
+```
+$npm run dev
+```
+
+
 
 ### Characteristics
 - **Admin role**
