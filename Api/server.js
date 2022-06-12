@@ -104,9 +104,14 @@ app.delete('/plans/:planId', authUser, isTrainer, deleteTrainingFromPlan)
 */
 const {
   likes,
+  listLikes
 } = require('./controllers/likesControllers/')
 
 app.post('/trainings/:idTraining/likes', authUser, likes)
+
+//Todos los likes de un entrenamiento
+app.get('/trainings/:idTraining/listLikes', listLikes)
+
 
 /*
 *######################
