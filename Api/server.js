@@ -94,7 +94,7 @@ const {
 //create a new plan
 app.post('/plans',authUser, isTrainer, createPlan);
 app.post('/plans/:idPlan', authUser, isTrainer,addTraining)
-app.put('/plans/:trainingId', authUser, isTrainer, modifyTraining)
+app.put('/plans/:trainingId', authUser, isTrainer, modifyPlanTrainings)
 app.delete('/plans/:planId', authUser, isTrainer, deleteTrainingFromPlan)
 
 /*

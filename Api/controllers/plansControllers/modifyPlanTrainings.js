@@ -12,7 +12,7 @@ const modifyPlanTrainings = async ( req, res, next ) => {
     const { sets, reps } = req.body;
 
 
-    await modifyTrainingQuery(trainingId, sets, reps)
+    await modifyPlanTrainingsQuery(trainingId, sets, reps)
 
     res.send({
       status: 'ok',
