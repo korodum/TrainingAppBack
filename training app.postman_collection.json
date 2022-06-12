@@ -1,0 +1,487 @@
+{
+	"info": {
+		"_postman_id": "fb1d14d9-aa50-428e-9c7a-2ac509193323",
+		"name": "training app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "trainings",
+			"item": [
+				{
+					"name": "new training",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "deadlift",
+									"type": "default"
+								},
+								{
+									"key": "muscleGroup",
+									"value": "legs",
+									"type": "default"
+								},
+								{
+									"key": "typology",
+									"value": "strength",
+									"type": "default"
+								},
+								{
+									"key": "description",
+									"value": "In a deadlift, you lift the weight from the ground to thigh-level using primarily your leg and hip muscles, but with the assistance of most of the large muscle groups of your body. The deadlift is usually performed with a bar and plates or a fixed barbell but can be done with dumbbells",
+									"type": "default"
+								},
+								{
+									"key": "images",
+									"type": "file",
+									"src": "/F:/Descargas/Barbend-2021-Deadlift.png"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/trainings",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"trainings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get training",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{tokenTrainer}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{server}}/trainings/4",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"trainings",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list trainings by query",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{tokenAdmin}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{server}}/trainings?typology=strength",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"trainings"
+							],
+							"query": [
+								{
+									"key": "typology",
+									"value": "strength"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modify training",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{tokenAdmin}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"Start by standing with your legs spread and your hands touching overheadJump into the air, simultaneously bringing your legs together and pull the arms down to your sides Without resting, jump again and return to the starting position.Repeat for 30 seconds\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/trainings/7",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"trainings",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete training",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{tokenAdmin}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{server}}/trainings/4",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"trainings",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "newUser",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"pepe\",\r\n    \"email\": \"pepe@pepe.com\",\r\n    \"password\": \"loremipsum\",\r\n    \"role\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/users",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list all users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{server}}/users/list",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"users",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modify user",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{tokenAdmin}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"karim\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/users/modify/3",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"users",
+								"modify",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"method": "DELETE",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "plans",
+			"item": [
+				{
+					"name": "create plan",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{tokenAdmin}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"test training\",\r\n    \"typology\":\"strength\",\r\n    \"trainerId\":1,\r\n    \"userId\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/plans",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"plans"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add training to a plan",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{tokenAdmin}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"trainingId\":1,\r\n    \"sets\":4,\r\n    \"reps\":12\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/plans/1",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"plans",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete a training of a plan",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{tokenTrainer}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"trainingId\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/plans/1",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"plans",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modify plan training",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/plans/1",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"plans",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"token\", data.token);\r",
+							"postman.setEnvironmentVariable(\"user\", data.user);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"pepe@pepe.com\",\r\n    \"password\":\"loremipsum\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{server}}/login",
+					"host": [
+						"{{server}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "server",
+			"value": "http://localhost:4000",
+			"type": "default"
+		},
+		{
+			"key": "tokenAdmin",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "tokenTrainer",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "tokenUser",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
