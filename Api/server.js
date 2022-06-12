@@ -49,7 +49,7 @@ app.get('/users', authUser,isTrainer, listUsers);
 app.put('/users/:idUser', authUser, modifyUser);
 
 // Eliminar al usuario
-app.delete('/users/:id',authUser, isAdmin, deleteUser);
+app.delete('/users/:idUser',authUser, isAdmin, deleteUser);
 
 /*
 *##########################

@@ -50,8 +50,8 @@ async function main() {
             typology ENUM('strength','flexibility','cardio','resistance','equilibrium','recovery') DEFAULT 'strength',
             trainerId INT,
             userId INT,
-            FOREIGN KEY (trainerId) REFERENCES users(id),
-            FOREIGN KEY (userId) REFERENCES users(id),
+            FOREIGN KEY (trainerId) REFERENCES users(id) ON DELETE CASCADE,
+            FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE,
             createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
             modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP
             )
@@ -63,7 +63,7 @@ async function main() {
             idTraining INT NOT NULL,
             sets TINYINT NOT NULL,
             reps TINYINT NOT NULL,
-            FOREIGN KEY (idPlan) REFERENCES plans(id),
+            FOREIGN KEY (idPlan) REFERENCES plans(id) ON DELETE CASCADE,
             FOREIGN KEY (idTraining) REFERENCES trainings(id),
             createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
             modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP
@@ -74,8 +74,8 @@ async function main() {
             id INT PRIMARY KEY AUTO_INCREMENT,
             idUser INT NOT NULL,
             idTraining INT NOT NULL,
-            FOREIGN KEY (idUser) REFERENCES users(id),
-            FOREIGN KEY (idTraining) REFERENCES trainings(id),
+            FOREIGN KEY (idUser) REFERENCES users(id) ON DELETE CASCADE,
+            FOREIGN KEY (idTraining) REFERENCES trainings(id) ON DELETE CASCADE,
             vote BOOLEAN DEFAULT TRUE,
             createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
             modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP
