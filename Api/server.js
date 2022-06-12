@@ -46,7 +46,7 @@ app.post('/login', login);
 app.get('/users', authUser,isTrainer, listUsers);
 
 // Modificar un usuario
-app.put('/users/modify/:idUser', authUser, modifyUser);
+app.put('/users/:idUser', authUser, modifyUser);
 
 // Eliminar al usuario
 app.delete('/users/:id',authUser, isAdmin, deleteUser);

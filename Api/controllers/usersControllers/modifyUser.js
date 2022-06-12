@@ -23,12 +23,12 @@ const modifyUser = async (req,res,next) =>{
 
 
         // Llamamos a nuestra query con los parametros del body
-        await updateUserQuery(idUser,nameUser,emailUser)
+        await updateUserQuery(idUser,name,email)
 
         // Enviamos un mensaje de que todo ha ido bien
         res.send({
             status:'ok',
-            message: `User ${nameUser} updated succesfully`,
+            message: `User ${name} updated succesfully`,
         })
 
     }catch (error){
