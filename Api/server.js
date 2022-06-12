@@ -20,6 +20,7 @@ app.use(fileUpload())
 *#################
 */
 const  {isAdmin} = require('./middlewares/isAdmin')
+const { isTrainer } = require('./middlewares/isTrainer')
 const  {authUser} = require('./middlewares/authUser')
 /*
 *######################
@@ -42,13 +43,13 @@ app.post('/register', authUser, isAdmin, register);
 app.post('/login', login);
 
 // Lista de usuarios
-app.get('/users/list', authUser,isAdmin, listUsers);
+app.get('/users/list', authUser,isTrainer, listUsers);
 
 // Modificar un usuario
 app.put('/users/modify/:idUser', authUser, modifyUser);
 
 // Eliminar al usuario
-app.delete('/users/delete/:id', deleteUser);
+app.delete('/users/delete/:id',isAdmin, deleteUser);
 
 /*
 *##########################
@@ -85,12 +86,14 @@ app.delete('/trainings/:trainingId', authUser, isAdmin, deleteTrainingById);;;
 */
 const {
   createPlan,
-  addTraining
+  addTraining,
+  deleteTrainingFromPlan
 } = require('./controllers/plansControllers');
 
 //create a new plan
-app.post('/plans',authUser, isAdmin, createPlan);
-app.post('/plans/:idPlan', authUser, isAdmin,addTraining)
+app.post('/plans',authUser, isTrainer, createPlan);
+app.post('/plans/:idPlan', authUser, isTrainer,addTraining)
+app.delete('/plans/:planId', authUser, isTrainer, deleteTrainingFromPlan)
 
 /*
 *######################

@@ -1,6 +1,6 @@
 const {getConnection} = require('./getConnection');
-
-
+const {registerQuery} = require('./userQueries/registerQuery');
+const { createPlanQuery } = require('./planQueries/createPlanQuery');
 async function main() {
 
     let connection;
@@ -83,14 +83,15 @@ async function main() {
         `);
         console.log('Tables created susccesfully');
 
-        await connection.query(`
-        INSERT INTO users (name, email, password, role) VALUES('admin','admin@admin.com','123456','admin')`);
+        await registerQuery('admin','admin@admin.com','123456','admin');
 
-        console.log('admin created');
+        console.log('test admin created');
 
-        await connection.query(`
-        INSERT INTO users (name, email, password, role) VALUES('user', 'user@user.com', '123456', 'user')
-        `);
+        await registerQuery('trainer','trainer@trainer.com','123456','trainer');
+
+        console.log('test trainer created')
+
+        await registerQuery('user','user@user.com','123456','user');
 
         console.log('test user created');
 
@@ -123,6 +124,10 @@ async function main() {
         `)
 
         console.log('cardio trainings created')
+
+        await createPlanQuery('test', 'a test plan', 'strength', '2', '3')
+
+        console.log('test plan created')
     } catch (error) {
         console.error(error);
     }finally{
