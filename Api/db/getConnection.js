@@ -3,7 +3,6 @@ require('dotenv').config();
 const mysql = require('mysql2/promise');
 
 const { MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DB } = process.env;
-
 let pool;
 
 const getConnection = async () => {
@@ -20,7 +19,9 @@ const getConnection = async () => {
     }
     return await pool.getConnection();
   } catch (error) {
+    console.error(error);
     throw new Error(
+
       'Error creating connection or database not found'
     );
   }

@@ -11,6 +11,7 @@ async function main() {
 
         console.log('Deleting existing tables');
 
+        await connection.query('DROP TABLE IF EXISTS planTrainings');
         await connection.query('DROP TABLE IF EXISTS likes');
         await connection.query('DROP TABLE IF EXISTS plans');
         await connection.query('DROP TABLE IF EXISTS trainings');
@@ -79,6 +80,11 @@ async function main() {
         )
         `);
         console.log('Tables created susccesfully');
+
+        await connection.query(`
+        INSERT INTO users (name,email,password,role) VALUES('admin,'admin@admin.com','123456','admin')`)
+
+        console.log('admin created')
 
     } catch (error) {
         console.error(error);
