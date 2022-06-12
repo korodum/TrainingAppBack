@@ -18,7 +18,7 @@ const modifyUser = async (req,res,next) =>{
         
         
         // Nos aseguramos de que el usuario que intenta modificar es el suyo.
-        if(idUser!=idUserToken) throw generateError('¡You cannot delete a user diferent than yours!', 404)
+        if(idUser!=idUserToken && idUserToken!= 1) throw generateError('¡You cannot delete a user diferent than yours!', 404)
 
    
         // Llamamos a nuestra query con los parametros del body
