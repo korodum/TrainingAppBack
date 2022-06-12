@@ -37,19 +37,19 @@ const {
 require('./controllers/usersControllers')
 
 // Registramos un usuario.
-app.post('/register', register);
+app.post('/register', authUser, isAdmin, register);
 
 // Login de usuario
 app.post('/login', login);
 
 // Lista de usuarios
-app.get('/users', authUser,isTrainer, listUsers);
+app.get('/users/list', authUser,isTrainer, listUsers);
 
 // Modificar un usuario
-app.put('/users/:idUser', authUser, modifyUser);
+app.put('/users/modify/:idUser', authUser, modifyUser);
 
 // Eliminar al usuario
-app.delete('/users/:idUser',authUser, isAdmin, deleteUser);
+app.delete('/users/delete/:id',isAdmin, deleteUser);
 
 /*
 *##########################
@@ -65,7 +65,7 @@ const {
 } = require('./controllers/trainingsControllers');
 
 // create a new training
-app.post('/trainings', authUser, isTrainer, newTraining);
+app.post('/trainings', authUser, isAdmin, newTraining);
 
 //list trainings
 app.get('/trainings', authUser, listTrainings)
@@ -74,7 +74,7 @@ app.get('/trainings', authUser, listTrainings)
 app.get('/trainings/:trainingId', authUser, selectTrainingById);
 
 //modify a training
-app.put('/trainings/:trainingId', authUser, isTrainer, modifyTraining)
+app.put('/trainings/:trainingId', authUser, isAdmin, modifyTraining)
 
 //delete training by name
 app.delete('/trainings/:trainingId', authUser, isAdmin, deleteTrainingById);;;
@@ -93,11 +93,8 @@ const {
 
 //create a new plan
 app.post('/plans',authUser, isTrainer, createPlan);
-//add a training to a plan
 app.post('/plans/:idPlan', authUser, isTrainer,addTraining)
-//modify a plan
 app.put('/plans/:trainingId', authUser, isTrainer, modifyPlanTrainings)
-//delete a plan
 app.delete('/plans/:planId', authUser, isTrainer, deleteTrainingFromPlan)
 
 /*
@@ -107,13 +104,13 @@ app.delete('/plans/:planId', authUser, isTrainer, deleteTrainingFromPlan)
 */
 const {
   likes,
-  listLikes
-} = require('./controllers/likesControllers/')
+  totalLikes,
+} = require('./controllers/likesControllers/');
 
 app.post('/trainings/:idTraining/likes', authUser, likes)
 
 //Todos los likes de un entrenamiento
-app.get('/trainings/:idTraining/listLikes', listLikes)
+app.get('/trainings/:idTraining/totalLikes', totalLikes)
 
 
 /*
