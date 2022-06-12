@@ -84,11 +84,13 @@ app.delete('/trainings/:trainingId', authUser, isAdmin, deleteTrainingById);;;
 *######################
 */
 const {
-  createPlan
+  createPlan,
+  addTraining
 } = require('./controllers/plansControllers');
 
 //create a new plan
 app.post('/plans',authUser, isAdmin, createPlan);
+app.post('/plans/:idPlan', authUser, isAdmin,addTraining)
 
 /*
 *######################

@@ -7,7 +7,7 @@ const addTrainingQuery = async(idPlan, idTraining, sets, reps) =>{
     connection = await getConnection();
 
     await connection.query(`
-      INSERT INTO planTraings (idPlan, idTraining, sets, reps) VALUES ('?,?,?,?)
+      INSERT INTO planTrainings (idPlan, idTraining, sets, reps) VALUES (?,?,?,?)
     `,[idPlan, idTraining, sets, reps]);
 
   } finally {
