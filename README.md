@@ -7,8 +7,10 @@
 Implement and API that allow to manage (publish, modify, delete, vote and filter) trainings on a gym.
 
 ### Characteristics
+- **Admin role**
+    -he/she can do every action in the application
 - **Trainer role**
-    - Is the only one that can add, delete and modify trainings.
+    - he/she can add, delete and modify trainings and also list users.
 - **Registered role**
     - Log in
     - They can get a list of trainings, see the info of an training and vote them.
@@ -54,10 +56,6 @@ Implement and API that allow to manage (publish, modify, delete, vote and filter
     - name
     - description
     - typology
-    - muscle group
-    - series
-    - sets
-    - restTime
     - trainingId
     - trainerId
     - userId
@@ -66,15 +64,27 @@ Implement and API that allow to manage (publish, modify, delete, vote and filter
 
 ### Entities Relationship
 
-- **LIKES** - Contains the likesthe users give to an training
+- **LIKES** - Contains the likes the users give to an training
     - id
     - idUser
     - idTraining
+
+- **planTrainings** Contains information about the trainings in a plan
+    - id
+    - idPlan
+    - idTraining
+    - sets
+    - reps
+    - createdAt
+    - modifiedAt
 ---
 <br>
 
 ## ENDPOINTS ▶️
 
+### Endpoints of users (Admin)
+- **POST** > [/register] - create a new user. [_**With admin token**_]
+- **DELETE** > [/users]
 ### Endpoints of users (trainer)
 
 -  **POST** > [/trainings/add] - Add training. [ _**With trainer token**_ ]
@@ -90,8 +100,7 @@ Implement and API that allow to manage (publish, modify, delete, vote and filter
 
 ### Endpoints of users (anonymous)
 
--  **POST** > [/login/] - Log in.
--  **POST** > [/register/] - Regist er.
+-  **POST** > [/login/] - Log in
 ---
 <br>
 
