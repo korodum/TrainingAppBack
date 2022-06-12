@@ -83,12 +83,12 @@ app.delete('/trainings/:trainingId', authUser, isAdmin, deleteTrainingById);;;
 *## Plans Endpoints ###
 *######################
 */
-// const {
-//   createPlan
-// } = require('./controllers/planControllers');
+const {
+  createPlan
+} = require('./controllers/plansControllers');
 
 //create a new plan
-//app.post('/plans',authUser, isAdmin, createPlan);
+app.post('/plans',authUser, isAdmin, createPlan);
 
 /*
 *######################

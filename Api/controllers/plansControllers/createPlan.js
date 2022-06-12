@@ -4,11 +4,11 @@ const { generateError } = require('../../helpers');
 
 const createPlan = async (req, res, next) => {
   try {
-    const { name, muscleGroup, trainerId, userId } = req.body;
+    const { name,description, typology, trainerId, userId } = req.body;
 
-    if(!name || !muscleGroup || !trainerId || !userId) throw generateError('Fill all fields',400);
+    if(!name || !typology || !trainerId || !userId) throw generateError('Fill all fields',400);
 
-    await createPlanQuery( name, muscleGroup, trainerId, userId );
+    await createPlanQuery( name, description, typology, trainerId, userId );
     res.send({
       status: 'ok',
       message:`the plan ${name} has been created`

@@ -11,11 +11,12 @@ const modifyTraining = async ( req, res, next ) => {
 
     const { name, description, typology,muscleGroup } = req.body;
 
+
     await modifyTrainingQuery(trainingId, name, description, typology,muscleGroup)
 
     res.send({
       status: 'ok',
-      message: `training ${name} was successfully modified`
+      message: `training with id ${trainingId} was successfully modified`
     })
   } catch (error) {
     next(error);

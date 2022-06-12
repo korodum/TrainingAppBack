@@ -1,15 +1,15 @@
 const { getConnection } = require ('../getConnection');
 const { generateError } = require ('../../helpers');
 
-const createPlanQuery = async ( name, muscleGroup, trainerId, userId ) => {
+const createPlanQuery = async ( name,description, typology, trainerId, userId ) => {
   let connection;
 
   try {
     connection = await getConnection();
 
     const newPlan = await connection.query(`
-      INSERT INTO plans ( name, muscleGroup, trainerId, userId )
-    `);
+      INSERT INTO plans ( name, description, typology, trainerId, userId ) VALUES (?,?,?,?,?)
+    `,[name,description, typology, trainerId, userId]);
 
     return newPlan.insertId;
   } finally {
