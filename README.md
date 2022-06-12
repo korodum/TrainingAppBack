@@ -83,14 +83,15 @@ Implement and API that allow to manage (publish, modify, delete, vote and filter
 ## ENDPOINTS ▶️
 
 ### Endpoints of users (Admin)
-- **POST** > [/register] - create a new user. [_**With admin token**_]
-- **DELETE** > [/users]
+- **DELETE** > [/users/:idUser] - delete
+- **DELETE** > [/trainings/trainingId:]
 ### Endpoints of users (trainer)
 
 -  **POST** > [/trainings/add] - Add training. [ _**With trainer token**_ ]
 -  **GET** > [/trainings/:idTraining] - Add training. [ _**With trainer token**_ ]
 - **PUT** > [/trainings/:idTraining/modify] - Modify training [ _**With trainer token**_ ]
 - **DELETE** > [/trainings/:idTraining/delete] - Delete training [ _**With trainer token**_ ]
+
 
 ### Endpoints of users
 
@@ -99,7 +100,7 @@ Implement and API that allow to manage (publish, modify, delete, vote and filter
 - **GET** > [/trainings?category=typology] - Filter trainings by typology. [ _**With token**_ ]
 
 ### Endpoints of users (anonymous)
-
+ - **POST** > [/register] - create a new user.
 -  **POST** > [/login/] - Log in
 ---
 <br>

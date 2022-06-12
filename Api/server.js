@@ -37,19 +37,19 @@ const {
 require('./controllers/usersControllers')
 
 // Registramos un usuario.
-app.post('/register', authUser, isAdmin, register);
+app.post('/register', register);
 
 // Login de usuario
 app.post('/login', login);
 
 // Lista de usuarios
-app.get('/users/list', authUser,isTrainer, listUsers);
+app.get('/users', authUser,isTrainer, listUsers);
 
 // Modificar un usuario
 app.put('/users/modify/:idUser', authUser, modifyUser);
 
 // Eliminar al usuario
-app.delete('/users/delete/:id',isAdmin, deleteUser);
+app.delete('/users/:id',authUser, isAdmin, deleteUser);
 
 /*
 *##########################
@@ -65,7 +65,7 @@ const {
 } = require('./controllers/trainingsControllers');
 
 // create a new training
-app.post('/trainings', authUser, isAdmin, newTraining);
+app.post('/trainings', authUser, isTrainer, newTraining);
 
 //list trainings
 app.get('/trainings', authUser, listTrainings)
@@ -74,7 +74,7 @@ app.get('/trainings', authUser, listTrainings)
 app.get('/trainings/:trainingId', authUser, selectTrainingById);
 
 //modify a training
-app.put('/trainings/:trainingId', authUser, isAdmin, modifyTraining)
+app.put('/trainings/:trainingId', authUser, isTrainer, modifyTraining)
 
 //delete training by name
 app.delete('/trainings/:trainingId', authUser, isAdmin, deleteTrainingById);;;
