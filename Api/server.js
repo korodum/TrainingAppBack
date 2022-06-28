@@ -5,14 +5,18 @@ const { PORT } = process.env;
 const express = require('express');
 const fileUpload = require('express-fileupload');
 const morgan = require('morgan');
+const cors = require('cors');
 
 const app = express();
+
+app.use(cors());
 
 app.use(morgan('dev'));
 
 app.use(express.json());
 
 app.use(fileUpload())
+
 
 /*
 *#################
