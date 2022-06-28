@@ -33,7 +33,7 @@ async function main() {
         CREATE TABLE IF NOT EXISTS trainings(
             id INT PRIMARY KEY AUTO_INCREMENT,
             name VARCHAR(50) UNIQUE NOT NULL,
-            description VARCHAR(300) NOT NULL,
+            description VARCHAR(500) NOT NULL,
             typology ENUM('strength','flexibility','cardio','resistance','equilibrium','recovery') DEFAULT 'strength',
             muscleGroup ENUM('back','chest','arms','shoulders','legs','full body','cardio'),
             image VARCHAR(100),

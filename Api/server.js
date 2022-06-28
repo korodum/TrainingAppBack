@@ -37,7 +37,7 @@ const {
 require('./controllers/usersControllers')
 
 // Registramos un usuario.
-app.post('/register', authUser, isAdmin, register);
+app.post('/register', register);
 
 // Login de usuario
 app.post('/login', login);
