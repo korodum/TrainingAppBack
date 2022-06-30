@@ -21,18 +21,18 @@ const newTraining = async (req, res, next) => {
     }
 
 
-    if( req.files && req.files.images ) {
+    if( req.files && req.files.image ) {
 
       const uploadsDir = path.join(__dirname, '..', '..', 'uploads');
 
       await createPathIfNotExists(uploadsDir);
 
-      const sharpImg = sharp(req.files.images.data);
+      const sharpImg = sharp(req.files.image.data);
 
       sharpImg.resize(500);
 
       imgName = `${nanoid(24)}.jpg`;
-
+      console.log(imgName);
       const imgPath = path.join(uploadsDir, imgName);
 
       await sharpImg.toFile(imgPath);
