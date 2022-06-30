@@ -41,7 +41,7 @@ const newTraining = async (req, res, next) => {
 
 
     // Creamos un usuario en la base de datos.
-    await newTrainingQuery(name,muscleGroup, typology, description ,imgName);
+    await newTrainingQuery(name, description, typology, muscleGroup ,imgName);
 
     res.send({
       status:'ok',
