@@ -15,7 +15,11 @@ const newTrainingQuery = async (name, muscleGroup, typology, description, image 
     if(trainings.length > 0) throw generateError('A training with the same name already exists', 409);
 
     const [newTraining] = await connection.query(`
+<<<<<<< HEAD
       INSERT INTO trainings ( name,description, typology, muscleGroup, image) VALUES (?,?,?,?,?)
+=======
+      INSERT INTO trainings ( name, description, typology, muscleGroup, image) VALUES (?,?,?,?,?)
+>>>>>>> 33cda1a611b81f9dafd673cfcfd484be254f2261
     `,
     [name, muscleGroup, typology, description, image]);
 
