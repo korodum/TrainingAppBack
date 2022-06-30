@@ -17,7 +17,7 @@ const selectTrainingByIdQuery = async (id) => {
       throw generateError ('training not found', 404);
     }
 
-    return trainings [0];
+    return trainings[0];
   } finally {
     if (connection) connection.release();
   }

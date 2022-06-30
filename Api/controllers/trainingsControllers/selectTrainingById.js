@@ -7,9 +7,8 @@ const selectTrainingById = async (req, res, next) => {
     const training = await selectTrainingByIdQuery(trainingId);
     res.send({
       status: 'ok',
-      data: {
-        training,
-      }
+      data: training,
+      
     });
   } catch (err) {
     next(err);

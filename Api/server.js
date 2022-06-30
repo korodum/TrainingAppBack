@@ -74,13 +74,13 @@ app.post('/trainings', authUser, isAdmin, newTraining);
 //list trainings
 app.get('/trainings', authUser, listTrainings)
 
-//select a training by name
+//select a training by id
 app.get('/trainings/:trainingId', authUser, selectTrainingById);
 
 //modify a training
 app.put('/trainings/:trainingId', authUser, isAdmin, modifyTraining)
 
-//delete training by name
+//delete training by id
 app.delete('/trainings/:trainingId', authUser, isAdmin, deleteTrainingById);;;
 
 /*

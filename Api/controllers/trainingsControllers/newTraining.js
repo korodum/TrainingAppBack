@@ -8,7 +8,7 @@ const { generateError, createPathIfNotExists } = require('../../helpers');
 const newTraining = async (req, res, next) => {
   try{
     // Recogemos los campos del body.
-    const {name, muscleGroup , typology, description } = req.body;
+    const {name, muscleGroup , typology, description, image } = req.body;
 
     // Han de rellenarse todos los campos
     if(!name || !muscleGroup || !typology || !description ) {
@@ -20,7 +20,6 @@ const newTraining = async (req, res, next) => {
         );
     }
 
-    let imgName;
 
     if( req.files && req.files.images ) {
 
