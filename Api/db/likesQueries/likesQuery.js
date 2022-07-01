@@ -7,7 +7,7 @@ const likesQuery = async (idUser, idTraining) =>{
         connection = await getConnection();
 
         const [trainings] = await connection.query(`
-            SELECT vote FROM likes WHERE idUser = ? and idTraining= ? `, [idUser,idTraining]
+            SELECT votes FROM likes WHERE idUser = ? and idTraining= ? `, [idUser,idTraining]
         );
         
         if(trainings.length < 1){
@@ -18,10 +18,10 @@ const likesQuery = async (idUser, idTraining) =>{
             return true;
         }else{
             await connection.query(`
-            UPDATE likes SET vote =? WHERE idUser= ? and idTraining = ?
-            `, [!trainings[0].vote, idUser, idTraining ]
+            UPDATE likes SET votes =? WHERE idUser= ? and idTraining = ?
+            `, [!trainings[0].votes, idUser, idTraining ]
             );
-            return !trainings[0].vote;
+            return !trainings[0].votes;
         }
 
     } finally {

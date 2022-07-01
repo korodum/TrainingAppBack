@@ -4,9 +4,10 @@ const likesQuery = require('../../db/likesQueries/likesQuery');
 const likes = async (req,res,next)=>{
     try{
     const {idTraining} = req.params;
-
-    const {id:idUser} = req.user;
-    console.log(idUser)
+    const {idUser} = req.user;
+    
+    console.log('req.user______', req.user);
+    console.log('idUser________', idUser)
 
     console.log('user',req.user)
 
