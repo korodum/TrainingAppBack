@@ -73,11 +73,11 @@ async function main() {
         await connection.query(`
         CREATE TABLE IF NOT EXISTS likes(
             id INT PRIMARY KEY AUTO_INCREMENT,
+            votes BOOLEAN DEFAULT true,
             idUser INT NOT NULL,
-            idTraining INT NOT NULL,
             FOREIGN KEY (idUser) REFERENCES users(id) ON DELETE CASCADE,
+            idTraining INT NOT NULL,
             FOREIGN KEY (idTraining) REFERENCES trainings(id) ON DELETE CASCADE,
-            vote BOOLEAN DEFAULT TRUE,
             createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
             modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP
         )

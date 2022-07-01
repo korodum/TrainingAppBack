@@ -1,26 +1,27 @@
 const {getConnection} = require('../getConnection');
 
-const likesQuery = async (idTraining, idUser) =>{
+const likesQuery = async (idUser, idTraining) =>{
     let connection;
 
     try{
         connection = await getConnection();
 
-        const [likes] = await connection.query(`
-            SELECT vote FROM likes WHERE idTraining= ? and idUser = ? `, [idTraining,idUser]
+        const [trainings] = await connection.query(`
+            SELECT vote FROM likes WHERE idUser = ? and idTraining= ? `, [idUser,idTraining]
         );
         
-        if(likes.length < 1){
+        if(trainings.length < 1){
             await connection.query(`
-            INSERT INTO likes (idTraining, idUser)
-            VALUES (?,?)
-            `,[idTraining, idUser])
+            INSERT INTO likes (idUser, idTraining, createdAt)
+            VALUES (?,?,?)
+            `,[idUser, idTraining, new Date()])
             return true;
         }else{
             await connection.query(`
-            UPDATE likes SET vote =? WHERE idTraining= ? and idUser = ?
-            `, [!likes[0].vote, idTraining, idUser]);
-            return !likes[0].vote;
+            UPDATE likes SET vote =? WHERE idUser= ? and idTraining = ?
+            `, [!trainings[0].vote, idUser, idTraining ]
+            );
+            return !trainings[0].vote;
         }
 
     } finally {
