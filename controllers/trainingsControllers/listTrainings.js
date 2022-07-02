@@ -3,14 +3,15 @@ const { listTrainingsQuery } = require('../../db/trainingQueries/listTrainingsQu
 const listTrainings = async ( req, res, next ) =>{
   try {
     const {typology, muscleGroup} = req.query;
+    const idUser = req.user.idUser;
 
-    const trainings = await listTrainingsQuery (typology, muscleGroup);
+    const trainings = await listTrainingsQuery (idUser, typology, muscleGroup);
 
     res.send({
       status: 'ok',
       data: {
         trainings,
-      }
+      },
     });
   } catch (err) {
     next(err);
@@ -19,4 +20,4 @@ const listTrainings = async ( req, res, next ) =>{
 
 module.exports = {
   listTrainings
-}
+};

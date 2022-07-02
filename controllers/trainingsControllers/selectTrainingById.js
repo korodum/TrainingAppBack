@@ -10,8 +10,6 @@ const selectTrainingById = async (req, res, next) => {
       data: training,
     });
 
-    console.log(training);
-
   } catch (err) {
     next(err);
   }

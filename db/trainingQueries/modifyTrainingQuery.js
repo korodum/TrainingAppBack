@@ -9,7 +9,8 @@ const modifyTrainingQuery = async (id, name, description, typology, muscleGroup)
     connection = await getConnection();
 
     const [trainings] = await connection.query(`SELECT name, description, typology, muscleGroup FROM trainings WHERE id = ?`,[id]);
-    if(trainings.length < 1) throw generateError ('no trainings found', 404);
+
+    if(trainings.length < 1) throw generateError ('No trainings found', 404);
 
       name = name || trainings[0].name;
       description = description || trainings[0].description;
