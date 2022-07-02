@@ -8,8 +8,10 @@ const selectTrainingById = async (req, res, next) => {
     res.send({
       status: 'ok',
       data: training,
-      
     });
+
+    console.log(training);
+
   } catch (err) {
     next(err);
   }

@@ -17,7 +17,8 @@ app.use(express.json());
 
 app.use(fileUpload());
 
-app.use(express.static('uploads'));
+app.use(express.static('uploads'))
+
 
 /*
 *#################
@@ -110,7 +111,7 @@ app.delete('/plans/:planId', authUser, isTrainer, deleteTrainingFromPlan)
 const {
   likes,
   totalLikes,
-} = require('./controllers/likesControllers/');
+} = require('./controllers/likesControllers');
 
 app.post('/trainings/:idTraining/likes', authUser, likes)
 
