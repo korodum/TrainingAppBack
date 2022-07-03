@@ -35,7 +35,7 @@ const login = async (req,res,next) =>{
 
         res.send({
             status:'ok',
-            data:{ token, payload },
+            data:token,
             message:`Welcome!`,
         })
 
