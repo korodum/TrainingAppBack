@@ -39,22 +39,26 @@ const {
   deleteUser,
   listUsers,
   modifyUser,
+  getOwnUser
 } =
 require('./controllers/usersControllers')
 
 // Registramos un usuario.
 app.post('/register', register);
 
-// Login de usuario
+// Login de usuario.
 app.post('/login', login);
 
-// Lista de usuarios
+//Conseguir nuestro propio usuario.
+app.get('/users/:idUser', authUser,getOwnUser)
+
+// Lista de usuarios.
 app.get('/users/list', authUser,isTrainer, listUsers);
 
-// Modificar un usuario
+// Modificar un usuario.
 app.put('/users/modify/:idUser', authUser, modifyUser);
 
-// Eliminar al usuario
+// Eliminar al usuario.
 app.delete('/users/delete/:id',isAdmin, deleteUser);
 
 /*
