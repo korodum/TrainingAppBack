@@ -9,10 +9,10 @@ const newTraining = async (req, res, next) => {
   try{
     // Recogemos los campos del body.
     console.log(req.body)
-    let {name, muscleGroup , typology, description, imgName } = req.body;
+    let {idUser, name, description, typology, muscleGroup, imgName } = req.body;
 
     // Han de rellenarse todos los campos
-    if(!name || !muscleGroup || !typology || !description ) {
+    if(!idUser, !name || !muscleGroup || !typology || !description ) {
 
       throw generateError(
         'Fill all fields',
@@ -42,11 +42,11 @@ const newTraining = async (req, res, next) => {
 
 
     // Creamos un usuario en la base de datos.
-    await newTrainingQuery(name, description, typology, muscleGroup ,imgName);
+    await newTrainingQuery(idUser, name, description, typology, muscleGroup, imgName );
 
     res.send({
       status:'ok',
-      message:`The training ${name} has been created succsefully`
+      message:`The training ${name} has been created succesfully`
   })
 
   }catch(err){

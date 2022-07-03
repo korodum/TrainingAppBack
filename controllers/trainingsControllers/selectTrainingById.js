@@ -3,14 +3,12 @@ const { selectTrainingByIdQuery } = require('../../db/trainingQueries/selectTrai
 const selectTrainingById = async (req, res, next) => {
   try {
     const { trainingId } = req.params
-
-    const training = await selectTrainingByIdQuery(trainingId);
+    const idUser = req.user.idUser;
+    const training = await selectTrainingByIdQuery(idUser, trainingId);
     res.send({
       status: 'ok',
       data: training,
     });
-
-    console.log(training);
 
   } catch (err) {
     next(err);

@@ -2,7 +2,7 @@ const { getConnection } = require('../getConnection');
 
 const { generateError } = require('../../helpers')
 
-const selectTrainingByIdQuery = async (id) => {
+const selectTrainingByIdQuery = async ( idUser,trainingId) => {
   let connection;
 
   try {
@@ -10,7 +10,7 @@ const selectTrainingByIdQuery = async (id) => {
 
 
     const [trainings] = await connection.query(
-      `SELECT * FROM trainings WHERE id = ?`,[id]
+      `SELECT * FROM trainings WHERE id = ?`,[trainingId]
     )
 
     if (trainings.length < 1) {

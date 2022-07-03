@@ -11,8 +11,8 @@ const likes = async (req,res,next)=>{
 
     console.log('user',req.user)
 
-    const vote = await likesQuery(idUser, idTraining)
-    const message = vote ? "Like enviado" : "Like eliminado"
+    const vote = await likesQuery(idUser, idTraining);
+    const message = vote ? "Like enviado" : "Like eliminado";
     res.send({
         status:'ok',
         message
