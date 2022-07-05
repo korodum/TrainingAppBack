@@ -6,9 +6,10 @@ const { deletePhoto } = require ('../../helpers');
 const deleteTrainingById = async (req, res, next) => {
   try {
     const {trainingId} = req.params;
+    const {idUser} = req.user;
+    
+    const training = await selectTrainingByIdQuery( idUser, trainingId );
 
-    const training = await selectTrainingByIdQuery( trainingId );
-    console.log(training.image)
     if(training.image) await deletePhoto( training.image)
 
     await deleteTrainingByIdQuery( trainingId );
