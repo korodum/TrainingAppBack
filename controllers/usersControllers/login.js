@@ -35,14 +35,17 @@ const login = async (req,res,next) =>{
 
         res.send({
             status:'ok',
-            data:token,
-            message:`Welcome!`,
+            data:{
+                token,
+                roleUser:userLogin.role,
+                idUser:userLogin.id,
+            },
         })
 
     }catch(error){ 
         next(error) 
     }
 
-}
+}   
 
 module.exports = {login};
