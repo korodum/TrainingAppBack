@@ -5,7 +5,7 @@ const listTrainings = async ( req, res, next ) =>{
     const {typology, muscleGroup} = req.query;
     const idUser = req.user.idUser;
 
-    const trainings = await listTrainingsQuery (idUser, typology, muscleGroup);
+    const trainings = await listTrainingsQuery (idUser, typology, muscleGroup,);
 
     res.send({
       status: 'ok',

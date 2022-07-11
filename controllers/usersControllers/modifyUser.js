@@ -12,7 +12,7 @@ const modifyUser = async (req,res,next) =>{
 
         // Destrucutring del id almacenado en el token.
         const {idUser:idUserToken, role} = req.user;
-        console.log(req.user)
+
 
         //Destructuring de los datos que recibimos del body
         const { name, email } = req.body;

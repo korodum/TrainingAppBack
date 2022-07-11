@@ -9,7 +9,6 @@ const modifyPlanTrainingsQuery = async (idTraining, sets, reps) => {
 
     const [plans] = await connection.query(`SELECT sets, reps FROM plantrainings WHERE idTraining = ?`,[idTraining]);
 
-    console.log(idTraining)
 
     if(plans.length < 1) throw generateError ('no trainings found', 404);
 

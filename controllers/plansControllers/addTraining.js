@@ -14,7 +14,7 @@ const addTraining = async (req, res, next) => {
       throw generateError('fill all fields',400);
     }
     const training = await selectTrainingByIdQuery(trainingId);
-    console.log('training.id',training.id)
+
     if(training.length === 0){
       throw generateError('training not found',404);
     }

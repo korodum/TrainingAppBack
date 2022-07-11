@@ -8,7 +8,7 @@ const { generateError, createPathIfNotExists } = require('../../helpers');
 const newTraining = async (req, res, next) => {
   try{
     // Recogemos los campos del body.
-    console.log(req.body)
+
     let {idUser, name, description, typology, muscleGroup, imgName } = req.body;
 
     // Han de rellenarse todos los campos
@@ -33,7 +33,7 @@ const newTraining = async (req, res, next) => {
       sharpImg.resize(500);
 
       imgName = `${nanoid(24)}.jpg`;
-      console.log(imgName);
+
       const imgPath = path.join(uploadsDir, imgName);
 
       await sharpImg.toFile(imgPath);

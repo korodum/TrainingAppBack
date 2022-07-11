@@ -4,7 +4,7 @@ const deleteUser = async ( req, res, next)=>{
     try{
         // Recogemos el idUser del usuarioq ue va ser eliminado del body
         const { idUser } = req.params;
-        console.log(idUser);
+
         // LLamamos a nuestra query para eliminar al usuario
         await deleteUserQuery(idUser);
 

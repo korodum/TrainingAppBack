@@ -6,8 +6,7 @@ const deleteTrainingFromPlanQuery = async (planId, trainingId) => {
 
   try {
     connection = await getConnection();
-    console.log(planId);
-    console.log(trainingId)
+
     const [plans] = await connection.query(`SELECT * FROM planTrainings WHERE idPlan = ?`,[planId])
 
     if (plans.length < 1) throw generateError ('plan  not exist', 404);

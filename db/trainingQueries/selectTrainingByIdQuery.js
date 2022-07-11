@@ -8,10 +8,9 @@ const selectTrainingByIdQuery = async ( idUser,trainingId) => {
   try {
     connection = await getConnection();
 
-
     const [trainings] = await connection.query(
       `SELECT T.id, T.idUser, U.name, T.name,T.muscleGroup, T.typology, T.description, T.image,
-      SUM(IFNULL(L.votes=1,0)) as likes, T.idUser=? AS owner, BIT_OR(L.idUser = ? AND L.votes=1) AS likedByMe, T.createdAt 
+      SUM(IFNULL(L.votes=1,0)) as likes, T.idUser=? AS owner, BIT_OR(L.idUser = ? AND L.votes=1) AS likedByMe, T.createdAt
       FROM trainings T
       LEFT JOIN likes L
       ON T.id = L.idTraining
@@ -27,6 +26,7 @@ const selectTrainingByIdQuery = async ( idUser,trainingId) => {
     }
 
     return trainings[0];
+
   } finally {
     if (connection) connection.release();
   }
