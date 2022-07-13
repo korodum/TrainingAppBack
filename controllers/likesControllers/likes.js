@@ -3,11 +3,11 @@ const likesQuery = require('../../db/likesQueries/likesQuery');
 
 const likes = async (req,res,next)=>{
     try{
-    const {idTraining} = req.params;
-    const {idUser} = req.user;
+    const {trainingId} = req.params;
+    const {userId} = req.user;
 
 
-    const vote = await likesQuery(idUser, idTraining);
+    const vote = await likesQuery(userId, trainingId);
     const message = vote ? "Like enviado" : "Like eliminado";
     res.send({
         status:'ok',

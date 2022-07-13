@@ -2,7 +2,7 @@ const {getConnection} = require('../getConnection.js');
 
 const {generateError} = require('../../helpers')
 
-const newTrainingQuery = async (idUser, name, description, typology, muscleGroup, image ='') => {
+const newTrainingQuery = async (userId, name, description, typology, muscleGroup, image ='') => {
 
   let connection;
 
@@ -12,13 +12,13 @@ const newTrainingQuery = async (idUser, name, description, typology, muscleGroup
       `SELECT id FROM trainings WHERE name = ?`,
       [name]
     );
-    
+
     if(trainings.length > 0) throw generateError('A training with the same name already exists', 409);
 
     const [newTraining] = await connection.query(
-      `INSERT INTO trainings ( idUser, name, description, typology, muscleGroup, image) 
+      `INSERT INTO trainings ( userId, name, description, typology, muscleGroup, image)
       VALUES (?, ?, ?, ?, ?, ?)`,
-      [idUser, name, description, typology, muscleGroup, image]
+      [userId, name, description, typology, muscleGroup, image]
     );
 
     return newTraining.inserId;

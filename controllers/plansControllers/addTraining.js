@@ -6,7 +6,7 @@ const { generateError } = require('../../helpers');
 
 const addTraining = async (req, res, next) => {
   try {
-    const { idPlan } = req.params;
+    const { planId } = req.params;
 
     const { trainingId, sets, reps } = req.body;
 
@@ -19,7 +19,7 @@ const addTraining = async (req, res, next) => {
       throw generateError('training not found',404);
     }
 
-    await addTrainingQuery (idPlan, training.id, sets, reps)
+    await addTrainingQuery (planId, training.id, sets, reps)
 
     res.send({
       status: 'ok',

@@ -80,13 +80,13 @@ $npm run dev
 
 - **LIKES** - Contains the likes the users give to an training
     - id
-    - idUser
-    - idTraining
+    - userId
+    - trainingId
 
 - **planTrainings** Contains information about the trainings in a plan
     - id
-    - idPlan
-    - idTraining
+    - planId
+    - trainingId
     - sets
     - reps
     - createdAt
@@ -97,20 +97,20 @@ $npm run dev
 ## ENDPOINTS ▶️
 
 ### Endpoints of users (Admin)
-- **DELETE** > [/users/:idUser] - delete
+- **DELETE** > [/users/:userId] - delete
 - **DELETE** > [/trainings/trainingId:]
 ### Endpoints of users (trainer)
 
 -  **POST** > [/trainings/add] - Add training. [ _**With trainer token**_ ]
--  **GET** > [/trainings/:idTraining] - Add training. [ _**With trainer token**_ ]
-- **PUT** > [/trainings/:idTraining/modify] - Modify training [ _**With trainer token**_ ]
-- **DELETE** > [/trainings/:idTraining/delete] - Delete training [ _**With trainer token**_ ]
+-  **GET** > [/trainings/:trainingId] - Add training. [ _**With trainer token**_ ]
+- **PUT** > [/trainings/:trainingId/modify] - Modify training [ _**With trainer token**_ ]
+- **DELETE** > [/trainings/:trainingId/delete] - Delete training [ _**With trainer token**_ ]
 
 
 ### Endpoints of users
 
 - **GET** > [/trainings/] - Show trainings list. [ _**With token**_ ]
-- **GET** > [/trainings/:idTraining] - Show a training information. [ _**With token**_ ]
+- **GET** > [/trainings/:trainingId] - Show a training information. [ _**With token**_ ]
 - **GET** > [/trainings?category=typology] - Filter trainings by typology. [ _**With token**_ ]
 
 ### Endpoints of users (anonymous)

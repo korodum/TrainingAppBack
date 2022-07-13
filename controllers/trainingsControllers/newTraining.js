@@ -8,11 +8,11 @@ const { generateError, createPathIfNotExists } = require('../../helpers');
 const newTraining = async (req, res, next) => {
   try{
     // Recogemos los campos del body.
-
-    let {idUser, name, description, typology, muscleGroup, imgName } = req.body;
+    let {userId} = req.user
+    let {name, description, typology, muscleGroup, imgName } = req.body;
 
     // Han de rellenarse todos los campos
-    if(!idUser, !name || !muscleGroup || !typology || !description ) {
+    if(!userId, !name || !muscleGroup || !typology || !description ) {
 
       throw generateError(
         'Fill all fields',
@@ -42,7 +42,7 @@ const newTraining = async (req, res, next) => {
 
 
     // Creamos un usuario en la base de datos.
-    await newTrainingQuery(idUser, name, description, typology, muscleGroup, imgName );
+    await newTrainingQuery(userId, name, description, typology, muscleGroup, imgName );
 
     res.send({
       status:'ok',

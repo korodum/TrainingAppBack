@@ -3,9 +3,9 @@ const { listTrainingsQuery } = require('../../db/trainingQueries/listTrainingsQu
 const listTrainings = async ( req, res, next ) =>{
   try {
     const {typology, muscleGroup} = req.query;
-    const idUser = req.user.idUser;
+    const userId = req.user.userId;
 
-    const trainings = await listTrainingsQuery (idUser, typology, muscleGroup,);
+    const trainings = await listTrainingsQuery (userId, typology, muscleGroup,);
 
     res.send({
       status: 'ok',

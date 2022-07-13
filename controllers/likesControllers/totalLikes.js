@@ -3,13 +3,13 @@ const {selectLikesQuery} = require('../../db/likesQueries/selectLikesQuery');
 
 const totalLikes = async (req,res,next)=>{
     try {
-        const {idTraining} = req.params
-        
-        const sumLikes = await selectLikesQuery(idTraining);
+        const {trainingId} = req.params
+
+        const sumLikes = await selectLikesQuery(trainingId);
 
         res.send({
             status:'ok',
-            data:{  
+            data:{
                 sumLikes
             }
         })

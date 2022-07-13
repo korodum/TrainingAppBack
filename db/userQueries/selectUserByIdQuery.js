@@ -1,16 +1,16 @@
-const getConnection = require('../getConnection');
+const {getConnection} = require('../getConnection');
 
 const { generateError } = require('../../helpers');
 
-const selectUserByIdQuery = async (idUser) => {
+const selectUserByIdQuery = async (userId) => {
     let connection;
 
     try {
         connection = await getConnection();
 
         const [users] = await connection.query(
-            `SELECT id, username, email, createdAt FROM users WHERE id = ?`,
-            [idUser]
+            `SELECT id, name, email, createdAt FROM users WHERE id = ?`,
+            [userId]
         );
 
         // Si no hay usuarios con ese id lanzamos un error.
@@ -19,7 +19,7 @@ const selectUserByIdQuery = async (idUser) => {
         }
 
         // Hacemos destructuring de las propiedades del usuario.
-        const { id, username, email, createdAt } = users[0];
+        const { id, name, email, createdAt } = users[0];
 
         // Información básica que retornaremos a todo el mundo.
         const userInfo = {
@@ -29,7 +29,7 @@ const selectUserByIdQuery = async (idUser) => {
         };
 
         // Si somos el propio usuario agregamos más info.
-        if (idUser === users[0].id) {
+        if (userId === users[0].id) {
             userInfo.email = email;
         }
 

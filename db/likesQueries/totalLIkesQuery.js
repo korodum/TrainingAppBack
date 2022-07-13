@@ -3,14 +3,14 @@ const { getConnection } = require('../getConnection');
 
 const { generateError } = require('../../helpers');
 
-const totalLikesQuery = async (idTraining)=>{
+const totalLikesQuery = async (trainingId)=>{
 
     let connection;
     try {
         connection = await getConnection();
 
         const [totalLikes] = await connection.query(`
-            SELECT SUM(vote) AS totalLikes, idTraining FROM likes WHERE idTraining = ? AND vote = 1;`,[idTraining] );
+            SELECT SUM(vote) AS totalLikes, trainingId FROM likes WHERE trainingId = ? AND vote = 1;`,[trainingId] );
 
         if(totalLikes.length===0) throw generateError('Training has no likes',404 );
 
@@ -22,5 +22,3 @@ const totalLikesQuery = async (idTraining)=>{
 };
 
 module.exports = {totalLikesQuery};
-
-

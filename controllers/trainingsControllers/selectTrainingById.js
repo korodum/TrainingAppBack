@@ -3,8 +3,8 @@ const { selectTrainingByIdQuery } = require('../../db/trainingQueries/selectTrai
 const selectTrainingById = async (req, res, next) => {
   try {
     const { trainingId } = req.params
-    const idUser = req.user.idUser;
-    const training = await selectTrainingByIdQuery(idUser, trainingId);
+    const userId = req.user.userId;
+    const training = await selectTrainingByIdQuery(userId, trainingId);
     res.send({
       status: 'ok',
       data: training,

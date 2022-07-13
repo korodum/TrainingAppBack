@@ -8,10 +8,10 @@ const modifyUser = async (req,res,next) =>{
         connection = await getConnection();
 
         // Destructuring del id recogido de los params
-        const {idUser} = req.params;
+        const {userId} = req.params;
 
         // Destrucutring del id almacenado en el token.
-        const {idUser:idUserToken, role} = req.user;
+        const {userId:userIdToken, role} = req.user;
 
 
         //Destructuring de los datos que recibimos del body
@@ -19,11 +19,11 @@ const modifyUser = async (req,res,next) =>{
 
 
         // Nos aseguramos de que el usuario que intenta modificar es el suyo.
-        if(idUser!=idUserToken && role!= 'admin') throw generateError('¡You cannot delete a user diferent than yours!', 404)
+        if(userId!=userIdToken && role!= 'admin') throw generateError('¡You cannot delete a user diferent than yours!', 404)
 
 
         // Llamamos a nuestra query con los parametros del body
-        await updateUserQuery(idUser,name,email)
+        await updateUserQuery(userId,name,email)
 
         // Enviamos un mensaje de que todo ha ido bien
         res.send({

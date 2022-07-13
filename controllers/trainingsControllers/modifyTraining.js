@@ -18,7 +18,7 @@ const modifyTraining = async ( req, res, next ) => {
     const { name, description, typology,muscleGroup} = req.body;
 
 
-    const training = await selectTrainingByIdQuery(req.user.idUser,trainingId)
+    const training = await selectTrainingByIdQuery(req.user.userId,trainingId)
 
     let imgName = training.image || null;
 

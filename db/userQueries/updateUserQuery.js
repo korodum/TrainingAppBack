@@ -3,7 +3,7 @@ const {getConnection} = require('../getConnection');
 const {generateError} = require('../../helpers');
 
 
-const updateUserQuery = async ( idUser, nameUser, emailUser )=>{
+const updateUserQuery = async ( userId, nameUser, emailUser )=>{
     let connection;
 
     try {
@@ -11,8 +11,8 @@ const updateUserQuery = async ( idUser, nameUser, emailUser )=>{
         connection = await getConnection();
 
         // Seleccionamos el usuario mediante id con su nombre y email
-        const [users] = await connection.query(`SELECT * FROM users WHERE id = ?`, [idUser]);
-        
+        const [users] = await connection.query(`SELECT * FROM users WHERE id = ?`, [userId]);
+
         // Si no hay usuario devolvemos un error
         if(users.length===0) throw generateError('No users found :(', 404);
 
@@ -26,7 +26,7 @@ const updateUserQuery = async ( idUser, nameUser, emailUser )=>{
             email = ?
             WHERE
             id=?
-        `, [nameUser, emailUser, idUser])
+        `, [nameUser, emailUser, userId])
 
         // Devolvemos al usuario
         return users;

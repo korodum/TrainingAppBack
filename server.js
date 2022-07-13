@@ -37,7 +37,6 @@ const {
   register,
   login,
   deleteUser,
-  listUsers,
   modifyUser,
   getOwnUser
 } =
@@ -50,16 +49,13 @@ app.post('/register', register);
 app.post('/login', login);
 
 //Conseguir nuestro propio usuario.
-app.get('/users/:idUser', authUser,getOwnUser)
-
-// Lista de usuarios.
-app.get('/users/list', authUser,isTrainer, listUsers);
+app.get('/users', authUser,getOwnUser);
 
 // Modificar un usuario.
-app.put('/users/modify/:idUser', authUser, modifyUser);
+app.put('/users/:userId', authUser, modifyUser);
 
 // Eliminar al usuario.
-app.delete('/users/delete/:id',isAdmin, deleteUser);
+app.delete('/users/:userId',isAdmin, deleteUser);
 
 /*
 *##########################
@@ -77,17 +73,17 @@ const {
 // create a new training
 app.post('/trainings', authUser, isAdmin, newTraining);
 
-//list trainings
-app.get('/trainings', authUser, listTrainings)
+// list trainings
+app.get('/trainings', authUser, listTrainings);
 
-//select a training by id
+// select a training by id
 app.get('/trainings/:trainingId', authUser, selectTrainingById);
 
-//modify a training
-app.put('/trainings/:trainingId', authUser, isAdmin, modifyTraining)
+// modify a training
+app.put('/trainings/:trainingId', authUser, isAdmin, modifyTraining);
 
 //delete training by id
-app.delete('/trainings/:trainingId', authUser, isAdmin, deleteTrainingById);;;
+app.delete('/trainings/:trainingId', authUser, isAdmin, deleteTrainingById);
 
 /*
 *######################
@@ -103,7 +99,7 @@ const {
 
 //create a new plan
 app.post('/plans',authUser, isTrainer, createPlan);
-app.post('/plans/:idPlan', authUser, isTrainer,addTraining)
+app.post('/plans/:planId', authUser, isTrainer,addTraining)
 app.put('/plans/:trainingId', authUser, isTrainer, modifyPlanTrainings)
 app.delete('/plans/:planId', authUser, isTrainer, deleteTrainingFromPlan)
 
@@ -117,10 +113,10 @@ const {
   totalLikes,
 } = require('./controllers/likesControllers');
 
-app.post('/trainings/:idTraining/likes', authUser, likes)
+app.post('/trainings/:trainingId/likes', authUser, likes)
 
 //Todos los likes de un entrenamiento
-app.get('/trainings/:idTraining/totalLikes', totalLikes)
+app.get('/trainings/:trainingId/totalLikes', totalLikes)
 
 
 /*

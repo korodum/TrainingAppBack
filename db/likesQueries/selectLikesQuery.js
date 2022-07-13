@@ -8,7 +8,7 @@ const selectLikesQuery = async (idLikes)=>{
     try {
         connection = await getConnection();
 
-        const [likes] = await connection.query(`SELECT * FROM likes WHERE idTraining=?`, [idLikes]);
+        const [likes] = await connection.query(`SELECT * FROM likes WHERE trainingId=?`, [idLikes]);
 
         if(likes.length===0) throw generateError('Training has no likes',404 );
 

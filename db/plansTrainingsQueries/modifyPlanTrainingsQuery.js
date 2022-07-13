@@ -1,13 +1,13 @@
 const { getConnection } = require('../getConnection');
 const { generateError } = require('../../helpers');
 
-const modifyPlanTrainingsQuery = async (idTraining, sets, reps) => {
+const modifyPlanTrainingsQuery = async (trainingId, sets, reps) => {
   let connection;
 
   try {
     connection = await getConnection();
 
-    const [plans] = await connection.query(`SELECT sets, reps FROM plantrainings WHERE idTraining = ?`,[idTraining]);
+    const [plans] = await connection.query(`SELECT sets, reps FROM plantrainings WHERE trainingId = ?`,[trainingId]);
 
 
     if(plans.length < 1) throw generateError ('no trainings found', 404);
@@ -19,7 +19,7 @@ const modifyPlanTrainingsQuery = async (idTraining, sets, reps) => {
     UPDATE plantrainings SET
     sets= ?,
     reps= ?
-    WHERE idTraining= ?;`,[sets, reps, idTraining]);
+    WHERE trainingId= ?;`,[sets, reps, trainingId]);
 
 
     return plans;

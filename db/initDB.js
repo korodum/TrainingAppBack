@@ -24,7 +24,7 @@ async function main() {
             name VARCHAR(25) NOT NULL,
             password VARCHAR(100) NOT NULL,
             email VARCHAR(100) UNIQUE NOT NULL,
-            role ENUM('admin','trainer','user') DEFAULT 'user',
+            role ENUM('admin','trainer','normal') DEFAULT 'normal',
             createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
             modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP
             )
@@ -33,8 +33,8 @@ async function main() {
         await connection.query(`
         CREATE TABLE IF NOT EXISTS trainings(
             id INT PRIMARY KEY AUTO_INCREMENT,
-            idUser INT NOT NULL,
-            FOREIGN KEY (idUser) REFERENCES users(id),
+            userId INT NOT NULL,
+            FOREIGN KEY (userId) REFERENCES users(id),
             name VARCHAR(50) UNIQUE NOT NULL,
             description VARCHAR(500) NOT NULL,
             typology ENUM('strength','flexibility','cardio','resistance','equilibrium','recovery') DEFAULT 'strength',
@@ -62,12 +62,12 @@ async function main() {
         await connection.query(`
         CREATE TABLE IF NOT EXISTS planTrainings(
             id INT PRIMARY KEY AUTO_INCREMENT,
-            idPlan INT NOT NULL,
-            idTraining INT NOT NULL,
+            planId INT NOT NULL,
+            trainingId INT NOT NULL,
             sets TINYINT NOT NULL,
             reps TINYINT NOT NULL,
-            FOREIGN KEY (idPlan) REFERENCES plans(id) ON DELETE CASCADE,
-            FOREIGN KEY (idTraining) REFERENCES trainings(id),
+            FOREIGN KEY (planId) REFERENCES plans(id) ON DELETE CASCADE,
+            FOREIGN KEY (trainingId) REFERENCES trainings(id),
             createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
             modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP
         )
@@ -76,10 +76,10 @@ async function main() {
         CREATE TABLE IF NOT EXISTS likes(
             id INT PRIMARY KEY AUTO_INCREMENT,
             votes BOOLEAN DEFAULT true,
-            idUser INT NOT NULL,
-            FOREIGN KEY (idUser) REFERENCES users(id) ON DELETE CASCADE,
-            idTraining INT NOT NULL,
-            FOREIGN KEY (idTraining) REFERENCES trainings(id) ON DELETE CASCADE,
+            userId INT NOT NULL,
+            FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE,
+            trainingId INT NOT NULL,
+            FOREIGN KEY (trainingId) REFERENCES trainings(id) ON DELETE CASCADE,
             createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
             modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP
         )
@@ -99,7 +99,7 @@ async function main() {
         console.log('test admin created');
         await registerQuery('trainer','trainer@trainer.com','123456','trainer');
         console.log('test trainer created')
-        await registerQuery('user','user@user.com','123456','user');
+        await registerQuery('user','user@user.com','123456','normal');
         console.log('test user created');
 
         /*  ***

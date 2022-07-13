@@ -15,7 +15,7 @@ const login = async (req,res,next) =>{
 
         // Recogemos el email que nos viene por la query
         const userLogin = await selectUserByEmailQuery(email);
-        
+
         // Comprobamos si las contraseñas coinciden
         const match = await bcrypt.compare(password, userLogin.password);
 
@@ -24,7 +24,7 @@ const login = async (req,res,next) =>{
 
         // Almacenamos los datos que queremos en el token.
         const payload = {
-            idUser:userLogin.id,
+            userId:userLogin.id,
             role:userLogin.role,
             name:userLogin.name,
         };
@@ -32,22 +32,22 @@ const login = async (req,res,next) =>{
         // Creamos el token del usuario.
         const token = jwt.sign( payload, process.env.SECRET,{
             expiresIn:'30d'
-        })  
+        })
 
         res.send({
             status:'ok',
             data:{
                 token,
                 roleUser:userLogin.role,
-                idUser:userLogin.id,
+                userId:userLogin.id,
                 name:userLogin.name,
             },
         })
 
-    }catch(error){ 
-        next(error) 
+    }catch(error){
+        next(error)
     }
 
-}   
+}
 
 module.exports = {login};
