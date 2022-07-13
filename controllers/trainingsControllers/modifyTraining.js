@@ -50,7 +50,7 @@ const modifyTraining = async ( req, res, next ) => {
 
     res.send({
       status: 'ok',
-      message: `Training with id ${trainingId} was successfully modified`
+      message: `Training updated`
     })
   } catch (error) {
     next(error);

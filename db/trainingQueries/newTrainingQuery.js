@@ -12,7 +12,7 @@ const newTrainingQuery = async (idUser, name, description, typology, muscleGroup
       `SELECT id FROM trainings WHERE name = ?`,
       [name]
     );
-
+    
     if(trainings.length > 0) throw generateError('A training with the same name already exists', 409);
 
     const [newTraining] = await connection.query(

@@ -26,12 +26,13 @@ const login = async (req,res,next) =>{
         const payload = {
             idUser:userLogin.id,
             role:userLogin.role,
+            name:userLogin.name,
         };
 
         // Creamos el token del usuario.
         const token = jwt.sign( payload, process.env.SECRET,{
             expiresIn:'30d'
-        })
+        })  
 
         res.send({
             status:'ok',
@@ -39,6 +40,7 @@ const login = async (req,res,next) =>{
                 token,
                 roleUser:userLogin.role,
                 idUser:userLogin.id,
+                name:userLogin.name,
             },
         })
 

@@ -10,16 +10,17 @@ const register = async (req,res,next)=>{
         // Han de rellenarse todos los campos
         if(!name || !email || !password || !role ) throw generateError('Fill all fields',400);
 
-
         // Creamos un usuario en la base de datos.
         await registerQuery(name, email, password, role);
+
         res.send({
             status:'ok',
-            message:`The user ${name} with the role ${role} has been created succsefully`,
+            message:`User created`,
         })
 
-
-    }catch(error){next(error)}
+    }catch(error) {
+        next(error)
+    }
 };
 
 module.exports = {register};
